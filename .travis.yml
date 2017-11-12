@@ -27,8 +27,8 @@ install:
     - yarn
 
 script:
-    - npm run prod
-    - vendor/bin/phpunit
+    - yarn run prod
+    - ./vendor/bin/phpunit
 
 notifications:
     email: false
