@@ -1,7 +1,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/kbkyzd/eien/master/public/img/KBKYZDx600.png"></p>
 
 <p align="center">Shiraishi, A school project.</p>
-<p align="center"><a href="https://travis-ci.org/kbkyzd/eien"><img src="https://img.shields.io/travis/kbkyzd/shiraishi.svg?style=flat-square" alt="Build Status"></a></p>
+<p align="center"><a href="https://travis-ci.org/kbkyzd/shiraishi"><img src="https://img.shields.io/travis/kbkyzd/shiraishi.svg?style=flat-square" alt="Build Status"></a></p>
 
 ## Dependencies
 * PHP 7.1
