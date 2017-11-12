@@ -4,7 +4,7 @@
     "license": "BSD-2-Clause",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1",
         "cakephp/chronos": "^1.1",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
