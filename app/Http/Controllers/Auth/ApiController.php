@@ -3,20 +3,36 @@
 namespace shiraishi\Http\Controllers\Auth;
 
 use Dingo\Api\Routing\Helpers;
+use Dingo\Blueprint\Annotation\Method\Get;
+use Dingo\Blueprint\Annotation\Parameter;
+use Dingo\Blueprint\Annotation\Parameters;
+use Dingo\Blueprint\Annotation\Resource;
+use Dingo\Blueprint\Annotation\Transaction;
+use Dingo\Blueprint\Annotation\Versions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use shiraishi\Http\Controllers\Controller;
 
+/**
+ * @Resource("Authentication", uri="/")
+ */
 class ApiController extends Controller
 {
     use Helpers;
 
     /**
-     * Get a JWT token via given credentials.
+     * Generates a JWT token via given credentials.
      *
      * @param  \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @Get("login")
+     * @Versions({"v1"})
+     * @Parameters({
+     *     @Parameter("email", type="string", required=true, description="Email of the user."),
+     *     @Parameter("password", type="string", required=true, description="Password.")
+     * })
      */
     public function login(Request $request)
     {
@@ -30,9 +46,13 @@ class ApiController extends Controller
     }
 
     /**
+     * Get user.
+     *
      * Get the current authenticated user.
      *
-     * @return \Illuminate\Contracts\Auth\Authenticatable
+     * @Post("/")
+     * @Versions({"v1"})
+     * @Request({"username": "foo", "password": "bar"})
      */
     public function me()
     {
