@@ -4,7 +4,6 @@ namespace Tests\Browser;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ExampleTest extends DuskTestCase
 {
@@ -18,6 +17,17 @@ class ExampleTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                     ->assertSee('Laravel');
+        });
+    }
+
+    public function testCreds()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('login')
+                    ->type('email', 'test@test.test')
+                    ->type('password', 'secret')
+                    ->press('Login')
+                    ->assertSee('These credentials do not match our records');
         });
     }
 }
