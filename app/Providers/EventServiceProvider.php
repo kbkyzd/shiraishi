@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'shiraishi\Events\Event' => [
-            'shiraishi\Listeners\EventListener',
+        'shiraishi\Events\TransactionProcessed' => [
+            'shiraishi\Listeners\Test'
         ],
     ];
 

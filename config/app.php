@@ -173,7 +173,7 @@ return [
          */
         shiraishi\Providers\AppServiceProvider::class,
         shiraishi\Providers\AuthServiceProvider::class,
-        // shiraishi\Providers\BroadcastServiceProvider::class,
+        shiraishi\Providers\BroadcastServiceProvider::class,
         shiraishi\Providers\EventServiceProvider::class,
         shiraishi\Providers\RouteServiceProvider::class,
 

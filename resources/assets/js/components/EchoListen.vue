@@ -3,10 +3,14 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Example Component</div>
+                    <div class="panel-heading">Transactions</div>
 
                     <div class="panel-body">
-                        I'm an example component!
+                        <ul>
+                            <li v-for="transaction in transactions">
+                                {{ transaction }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -16,8 +20,21 @@
 
 <script>
     export default {
+        props: ['user'],
+        data: () => {
+            return {
+                'transactions': ''
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            Echo.private(`App.User.${this.user}`)
+                .listen('TransactionProcessed', e => {
+                    console.log('Hit!');
+                    console.table(e);
+                });
+
+            console.log(`Listening for events on App.User.${this.user}`);
         }
+
     }
 </script>
