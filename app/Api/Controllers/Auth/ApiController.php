@@ -1,16 +1,15 @@
 <?php
 
-namespace shiraishi\Http\Controllers\Auth;
+namespace shiraishi\Api\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
-use Dingo\Blueprint\Annotation\Member;
-use Dingo\Blueprint\Annotation\Method\Get;
-use Dingo\Blueprint\Annotation\Method\Post;
 use Dingo\Blueprint\Annotation\Resource;
 use Dingo\Blueprint\Annotation\Response;
-use Dingo\Blueprint\Annotation\Transaction;
-use Illuminate\Http\Request;
+use Dingo\Blueprint\Annotation\Method\Get;
 use shiraishi\Http\Controllers\Controller;
+use Dingo\Blueprint\Annotation\Method\Post;
+use Dingo\Blueprint\Annotation\Transaction;
 
 /**
  * Besides `login` and `refresh`, you'll need to have a valid JWT token (aka authenticated).
