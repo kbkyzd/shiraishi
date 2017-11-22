@@ -3,35 +3,35 @@
 namespace shiraishi\Http\Controllers\Auth;
 
 use Dingo\Api\Routing\Helpers;
+use Dingo\Blueprint\Annotation\Member;
 use Dingo\Blueprint\Annotation\Method\Get;
-use Dingo\Blueprint\Annotation\Parameter;
-use Dingo\Blueprint\Annotation\Parameters;
+use Dingo\Blueprint\Annotation\Method\Post;
 use Dingo\Blueprint\Annotation\Resource;
+use Dingo\Blueprint\Annotation\Response;
 use Dingo\Blueprint\Annotation\Transaction;
-use Dingo\Blueprint\Annotation\Versions;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use shiraishi\Http\Controllers\Controller;
 
 /**
- * @Resource("Authentication", uri="/")
+ * Besides `login` and `refresh`, you'll need to have a valid JWT token (aka authenticated).
+ *
+ * @Resource("Authentication", uri="/api/auth", requestHeaders={"Accept": "application/x.shiraishi.v1+json", "Authorization": "Bearer YourJwtToken"})
  */
 class ApiController extends Controller
 {
     use Helpers;
 
     /**
-     * Generates a JWT token via given credentials.
+     * Generates a JWT token via given credentials
      *
      * @param  \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|void
      *
-     * @Get("login")
-     * @Versions({"v1"})
-     * @Parameters({
-     *     @Parameter("email", type="string", required=true, description="Email of the user."),
-     *     @Parameter("password", type="string", required=true, description="Password.")
+     * @Post("login")
+     * @Transaction({
+     *     @Request({"email": "mao@mao.mao", "password": "changeme"}, identifier="Login"),
+     *     @Response(200, body={"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ", "token_type": "Bearer", "expires_in": 3600})
      * })
      */
     public function login(Request $request)
@@ -46,41 +46,54 @@ class ApiController extends Controller
     }
 
     /**
-     * Get user.
+     * Get the currently authenticated user
      *
-     * Get the current authenticated user.
-     *
-     * @Post("/")
-     * @Versions({"v1"})
-     * @Request({"username": "foo", "password": "bar"})
+     * @Get("/me")
+     * @Request(identifier="Me")
+     * @Response(200, body={"name": "Amatsuka Mao", "email": "mao@amatsuka.me"})
      */
     public function me()
     {
-        return $this->guard()->user();
+        return $this->response->array($this->guard()->user());
     }
 
     /**
-     * Log the user out (Invalidate the token)
+     * Log the user out
+     *
+     * User is "logged out" by invalidating the token.
      *
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @Post("/logout")
+     * @Request(identifier="Logout")
+     * @Response(200, body={"message": "Token invalidated"})
      */
     public function logout()
     {
         $this->guard()->logout();
 
-        return [
-            'message' => 'Logged out.',
-        ];
+        $this->response->array([
+            'message' => 'Token invalidated.',
+        ]);
     }
 
     /**
      * Refresh a token.
      *
+     * The current token included in the request is invalidated and a new fresh token is generated and returned.
+     *
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @Post("/refresh")
+     * @Request(identifier="Refresh")
+     * @Response(200, body={"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ", "token_type": "Bearer", "expires_in": 3600})
      */
     public function refresh()
     {
-        return $this->respondWithToken($this->guard()->refresh());
+        return $this->response->array(
+            $this->respondWithToken(
+                $this->guard()->refresh()
+            ));
     }
 
     /**
@@ -106,6 +119,6 @@ class ApiController extends Controller
      */
     public function guard()
     {
-        return Auth::guard('api');
+        return auth('api');
     }
 }
