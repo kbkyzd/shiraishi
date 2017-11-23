@@ -2,8 +2,8 @@
 
 namespace shiraishi\Listeners;
 
-use shiraishi\Events\TransactionProcessed;
 use Illuminate\Queue\InteractsWithQueue;
+use shiraishi\Events\TransactionProcessed;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Test
@@ -21,7 +21,7 @@ class Test
     /**
      * Handle the event.
      *
-     * @param  TransactionProcessed  $event
+     * @param TransactionProcessed $event
      * @return void
      */
     public function handle(TransactionProcessed $event)

@@ -23,7 +23,7 @@ class ApiController extends Controller
     /**
      * Generates a JWT token via given credentials
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\JsonResponse|void
      *
@@ -92,13 +92,14 @@ class ApiController extends Controller
         return $this->response->array(
             $this->respondWithToken(
                 $this->guard()->refresh()
-            ));
+            )
+        );
     }
 
     /**
      * Get the token array structure.
      *
-     * @param  string $token
+     * @param string $token
      *
      * @return \Illuminate\Http\JsonResponse
      */

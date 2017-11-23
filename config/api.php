@@ -137,11 +137,11 @@ return [
     */
 
     'errorFormat' => [
-        'message' => ':message',
-        'errors' => ':errors',
-        'code' => ':code',
+        'message'     => ':message',
+        'errors'      => ':errors',
+        'code'        => ':code',
         'status_code' => ':status_code',
-        'debug' => ':debug',
+        'debug'       => ':debug',
     ],
 
     /*
@@ -224,7 +224,7 @@ return [
         'json' => [
             'pretty_print' => env('API_JSON_FORMAT_PRETTY_PRINT_ENABLED', false),
             'indent_style' => env('API_JSON_FORMAT_INDENT_STYLE', 'space'),
-            'indent_size' => env('API_JSON_FORMAT_INDENT_SIZE', 2),
+            'indent_size'  => env('API_JSON_FORMAT_INDENT_SIZE', 2),
         ],
 
     ],
