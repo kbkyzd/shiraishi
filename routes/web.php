@@ -22,9 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 if (app()->environment('local') && env('APP_DEBUG')) {
     Route::get('loginas/{id}', function ($id) {
         auth()->loginUsingId($id, true);
+
         return back();
     });
 }
-
 
 Route::view('transactions', 'echo-test');

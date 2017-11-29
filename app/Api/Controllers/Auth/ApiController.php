@@ -21,7 +21,7 @@ class ApiController extends Controller
     use Helpers;
 
     /**
-     * Generates a JWT token via given credentials
+     * Generates a JWT token via given credentials.
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -45,7 +45,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Get the currently authenticated user
+     * Get the currently authenticated user.
      *
      * @Get("/me")
      * @Request(identifier="Me")
@@ -57,7 +57,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Log the user out
+     * Log the user out.
      *
      * User is "logged out" by invalidating the token.
      *

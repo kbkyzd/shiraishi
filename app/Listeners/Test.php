@@ -2,9 +2,7 @@
 
 namespace shiraishi\Listeners;
 
-use Illuminate\Queue\InteractsWithQueue;
 use shiraishi\Events\TransactionProcessed;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Test
 {
