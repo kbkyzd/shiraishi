@@ -2,6 +2,7 @@
 
 <p align="center">Shiraishi, Another school project.</p>
 <p align="center"><a href="https://travis-ci.org/kbkyzd/shiraishi"><img src="https://img.shields.io/travis/kbkyzd/shiraishi.svg?style=flat-square" alt="Build Status"></a></p>
+<p align="center"><a href="https://styleci.io/repos/110443572"><img src="https://styleci.io/repos/110443572/shield" alt="Style CI Status"></a></p>
 
 ## Dependencies
 * PHP 7.1
