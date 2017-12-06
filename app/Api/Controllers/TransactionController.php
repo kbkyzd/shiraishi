@@ -1,9 +1,10 @@
 <?php
 
-namespace shiraishi\Http\Controllers;
+namespace shiraishi\Api\Controllers;
 
 use shiraishi\Transaction;
 use Illuminate\Http\Request;
+use shiraishi\Http\Controllers\Controller;
 
 class TransactionController extends Controller
 {
@@ -30,7 +31,7 @@ class TransactionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,7 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \shiraishi\Transaction  $transaction
+     * @param \shiraishi\Transaction $transaction
      * @return \Illuminate\Http\Response
      */
     public function show(Transaction $transaction)
@@ -52,7 +53,7 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \shiraishi\Transaction  $transaction
+     * @param \shiraishi\Transaction $transaction
      * @return \Illuminate\Http\Response
      */
     public function edit(Transaction $transaction)
@@ -63,8 +64,8 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \shiraishi\Transaction  $transaction
+     * @param \Illuminate\Http\Request $request
+     * @param \shiraishi\Transaction   $transaction
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Transaction $transaction)
@@ -75,7 +76,7 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \shiraishi\Transaction  $transaction
+     * @param \shiraishi\Transaction $transaction
      * @return \Illuminate\Http\Response
      */
     public function destroy(Transaction $transaction)

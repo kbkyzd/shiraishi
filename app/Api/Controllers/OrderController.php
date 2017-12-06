@@ -2,15 +2,12 @@
 
 namespace shiraishi\Api\Controllers;
 
-use shiraishi\Product;
+use shiraishi\Order;
 use Illuminate\Http\Request;
-use Dingo\Api\Routing\Helpers;
 use shiraishi\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
-    use Helpers;
-
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::paginate(2);
-//        return $this->response->array(Product::paginate(2));
+        //
     }
 
     /**
@@ -46,21 +42,21 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \shiraishi\Product $product
+     * @param \shiraishi\Order $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Order $order)
     {
-        return $this->response->array($product);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \shiraishi\Product $product
+     * @param \shiraishi\Order $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Order $order)
     {
         //
     }
@@ -69,10 +65,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \shiraishi\Product       $product
+     * @param \shiraishi\Order         $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -80,10 +76,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \shiraishi\Product $product
+     * @param \shiraishi\Order $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Order $order)
     {
         //
     }

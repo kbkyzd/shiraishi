@@ -5,12 +5,12 @@ use Dingo\Api\Routing\Router;
 $api = app('api.router');
 
 $api->version('v1', [
-    'namespace' => 'shiraishi\Api\Controllers',
+    'namespace'  => 'shiraishi\Api\Controllers',
     'middleware' => [
         'api',
         'api.throttle'
     ],
-    'limit' => 100,
+    'limit'   => 100,
     'expires' => 5,
 ], function (Router $api) {
     $api->group(['prefix' => 'auth'], function (Router $api) {

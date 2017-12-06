@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Horizon::auth(function($request){
+        Horizon::auth(function ($request) {
             return $this->app->environment('local') || ($request->user() && $request->user()->id === 1);
         });
     }
