@@ -23,8 +23,8 @@ $api->version('v1', [
         });
     });
 
-    $api->resource('products', 'ProductController');
-    $api->resource('transaction', 'TransactionController');
-    $api->group(['prefix' => 'transaction'], function (Router $api) {
+    $api->group(['middleware' => 'api.auth'], function (Router $api) {
+        $api->resource('products', 'ProductController');
+        $api->resource('transaction', 'TransactionController');
     });
 });
