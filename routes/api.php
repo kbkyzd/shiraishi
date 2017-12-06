@@ -8,7 +8,7 @@ $api->version('v1', [
     'namespace'  => 'shiraishi\Api\Controllers',
     'middleware' => [
         'api',
-        'api.throttle'
+        'api.throttle',
     ],
     'limit'   => 100,
     'expires' => 5,
