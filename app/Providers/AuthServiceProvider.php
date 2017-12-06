@@ -2,6 +2,7 @@
 
 namespace shiraishi\Providers;
 
+use Laravel\Horizon\Horizon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -24,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Horizon::auth(function($request){
+            return $this->app->environment('local') || ($request->user() && $request->user()->id === 1);
+        });
     }
 }
