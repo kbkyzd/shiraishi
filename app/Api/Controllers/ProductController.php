@@ -18,8 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::paginate(2);
-//        return $this->response->array(Product::paginate(2));
+        return Product::paginate(10);
     }
 
     /**
@@ -40,7 +39,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request->user();
+
+        $product = $user->products()->create([
+            'name'        => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return $this->accepted($product);
     }
 
     /**
@@ -74,7 +80,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update([
+            'name'        => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return $this->accepted($product);
     }
 
     /**
@@ -86,5 +97,15 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    protected function accepted(Product $product)
+    {
+        return $this->response->accepted(
+            route('products.show', [
+                'product' => $product->id,
+            ]),
+            $product
+        );
     }
 }
