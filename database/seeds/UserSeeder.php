@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use shiraishi\User;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
