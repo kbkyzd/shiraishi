@@ -1,7 +1,7 @@
 <?php
 
-use shiraishi\User;
 use Illuminate\Database\Seeder;
+use shiraishi\User;
 
 class UserSeeder extends Seeder
 {
@@ -17,5 +17,7 @@ class UserSeeder extends Seeder
             'email'    => 'mao@mao.mao',
             'password' => bcrypt('changeme'),
         ]);
+
+        factory(User::class, 10)->create();
     }
 }
