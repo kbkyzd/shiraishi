@@ -5,6 +5,7 @@ namespace shiraishi\Providers;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,9 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local', 'testing')) {
             $this->app->register(DuskServiceProvider::class);
         }
+
+        $this->app->make('api.exception')->register(function (ModelNotFoundException $exception) {
+            return abort(404);
+        });
     }
 }
