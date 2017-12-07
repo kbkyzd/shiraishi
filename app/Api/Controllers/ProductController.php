@@ -99,6 +99,10 @@ class ProductController extends Controller
         //
     }
 
+    /**
+     * @param \shiraishi\Product $product
+     * @return \Dingo\Api\Http\Response
+     */
     protected function accepted(Product $product)
     {
         return $this->response->accepted(
