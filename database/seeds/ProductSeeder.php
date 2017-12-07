@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use shiraishi\Product;
+use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
