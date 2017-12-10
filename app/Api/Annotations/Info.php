@@ -26,5 +26,22 @@ use Swagger\Annotations as SWG;
  *             format="int32"
  *         )
  *     ),
+ *     @SWG\Definition(
+ *         definition="TokenExpiry",
+ *         required={"message", "status_code"},
+ *         @SWG\Property(
+ *             property="message",
+ *             type="string"
+ *         ),
+ *         @SWG\Property(
+ *             property="status_code",
+ *             type="integer",
+ *             format="int32"
+ *         ),
+ *         example={
+ *             "message": "Token has expired",
+ *              "status_code": 401
+ *         }
+ *     ),
  * )
  */
