@@ -8,8 +8,8 @@ use Swagger\Annotations as SWG;
  *         title="Shiraishi",
  *         version="v1"
  *     ),
- *     schemes={"http"},
- *     host="localhost:8000",
+ *     schemes={"SWAGGER_SCHEME"},
+ *     host="SWAGGER_HOST",
  *     basePath="/api",
  *     produces={"application/x.shiraishi.v1+json"},
  *     consumes={"application/json"},
