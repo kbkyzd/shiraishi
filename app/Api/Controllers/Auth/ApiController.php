@@ -4,18 +4,12 @@ namespace shiraishi\Api\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
-use Dingo\Blueprint\Annotation\Resource;
+use Swagger\Annotations as SWG;
 use Dingo\Blueprint\Annotation\Response;
 use Dingo\Blueprint\Annotation\Method\Get;
 use shiraishi\Http\Controllers\Controller;
 use Dingo\Blueprint\Annotation\Method\Post;
-use Dingo\Blueprint\Annotation\Transaction;
 
-/**
- * Besides `login` and `refresh`, you'll need to have a valid JWT token (aka authenticated).
- *
- * @Resource("Authentication", uri="/api/auth", requestHeaders={"Accept": "application/x.shiraishi.v1+json", "Authorization": "Bearer YourJwtToken"})
- */
 class ApiController extends Controller
 {
     use Helpers;
@@ -25,13 +19,54 @@ class ApiController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\JsonResponse|void
+     * @return void
      *
-     * @Post("login")
-     * @Transaction({
-     *     @Request({"email": "mao@mao.mao", "password": "changeme"}, identifier="Login"),
-     *     @Response(200, body={"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ", "token_type": "Bearer", "expires_in": 3600})
-     * })
+     * @SWG\Post(
+     *     tags={"Authentication"},
+     *     path="/auth/login",
+     *     summary="Log in with given credentials",
+     *     description="Generate a valid access token based on user credentials.",
+     *     operationId="login",
+     *     @SWG\Parameter(
+     *          in="query",
+     *          name="email",
+     *          description="Email of the user.",
+     *          required=true,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          in="query",
+     *          name="password",
+     *          description="Password of the user.",
+     *          required=true,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          in="body",
+     *          name="body",
+     *          required=true,
+     *          @SWG\Schema(
+     *              @SWG\Property(property="email", description="JWT Access Token"),
+     *              @SWG\Property(property="password", description="Bearer"),
+     *          )
+     *      ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="Login successful.",
+     *          @SWG\Schema(
+     *              @SWG\Property(property="access_token", description="JWT Access Token"),
+     *              @SWG\Property(property="token_type", description="Bearer"),
+     *              @SWG\Property(property="expires_in", description="Issued token expiry in minutes")
+     *          ),
+     *          examples={
+     *              "application/json": {
+     *                  "access_token": "JWT Token Here",
+     *                  "token_type": "bearer",
+     *                  "expires_in": 60
+     *               }
+     *          }
+     *     )
+     * )
      */
     public function login(Request $request)
     {
@@ -47,9 +82,13 @@ class ApiController extends Controller
     /**
      * Get the currently authenticated user.
      *
-     * @Get("/me")
-     * @Request(identifier="Me")
-     * @Response(200, body={"name": "Amatsuka Mao", "email": "mao@amatsuka.me"})
+     * @SWG\Get(
+     *     path="/auth/me",
+     *     security={
+     *          {"jwt": {}},
+     *     },
+     *     @SWG\Response(response=200, description="Authenticated")
+     * )
      */
     public function me()
     {
