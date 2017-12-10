@@ -28,27 +28,17 @@ class ApiController extends Controller
      *     description="Generate a valid access token based on user credentials.",
      *     operationId="login",
      *     @SWG\Parameter(
-     *          in="query",
-     *          name="email",
-     *          description="Email of the user.",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *          in="query",
-     *          name="password",
-     *          description="Password of the user.",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Parameter(
      *          in="body",
      *          name="body",
      *          required=true,
      *          @SWG\Schema(
-     *              @SWG\Property(property="email", description="JWT Access Token"),
-     *              @SWG\Property(property="password", description="Bearer"),
-     *          )
+     *              @SWG\Property(property="email", description="Email of the user"),
+     *              @SWG\Property(property="password", description="Password of the user"),
+     *              example={
+     *                  "email": "mao@mao.mao",
+     *                  "password": "changeme"
+     *               }
+     *          ),
      *      ),
      *     @SWG\Response(
      *          response=200,
