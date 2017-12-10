@@ -15,17 +15,16 @@ use Swagger\Annotations as SWG;
  *     consumes={"application/json"},
  *     @SWG\Definition(
  *         definition="Error",
- *         required={"code", "message"},
- *         @SWG\Property(
- *             property="code",
- *             type="integer",
- *             format="int32"
- *         ),
+ *         required={"message", "status_code"},
  *         @SWG\Property(
  *             property="message",
  *             type="string"
+ *         ),
+ *         @SWG\Property(
+ *             property="status_code",
+ *             type="integer",
+ *             format="int32"
  *         )
  *     ),
- *
  * )
  */
