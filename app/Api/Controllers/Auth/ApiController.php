@@ -55,7 +55,8 @@ class ApiController extends Controller
      *                  "expires_in": 60
      *               }
      *          }
-     *     )
+     *     ),
+     *     @SWG\Response(response=401, description="Invalid credentials.")
      * )
      */
     public function login(Request $request)
@@ -77,7 +78,8 @@ class ApiController extends Controller
      *     security={
      *          {"jwt": {}},
      *     },
-     *     @SWG\Response(response=200, description="Authenticated")
+     *     @SWG\Response(response=200, description="Successful Operation"),
+     *     @SWG\Response(response=401, description="Token has expired", @SWG\Schema(ref="#/definitions/TokenExpiry"))
      * )
      */
     public function me()
@@ -92,16 +94,30 @@ class ApiController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @Post("/logout")
-     * @Request(identifier="Logout")
-     * @Response(200, body={"message": "Token invalidated"})
+     * @SWG\Post(
+     *     path="/auth/logout",
+     *     security={
+     *         {"jwt": {}},
+     *     },
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Token is blacklisted, user is *logged out*.",
+     *         examples={
+     *             "application/json": {
+     *                 "message": "Token invalidated.",
+     *                 "status_code": 200
+     *             }
+     *         }
+     *     )
+     * )
      */
     public function logout()
     {
         $this->guard()->logout();
 
-        $this->response->array([
-            'message' => 'Token invalidated.',
+        return $this->response->array([
+            'message'     => 'Token invalidated.',
+            'status_code' => 200,
         ]);
     }
 
