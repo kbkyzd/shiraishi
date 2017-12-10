@@ -2,7 +2,7 @@
 
 use Swagger\Annotations as SWG;
 
-/*
+/**
  * @SWG\Tag(
  *   name="Authentication",
  *   description="Everything about your Pets",
