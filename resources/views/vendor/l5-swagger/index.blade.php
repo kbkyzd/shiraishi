@@ -1762,7 +1762,7 @@
         const ui = SwaggerUIBundle({
             dom_id: '#swagger-ui',
 
-            url: "{!! $urlToDocs !!}",
+            url: "{!! sprintf('%s://%s/%s/%s', config('l5-swagger.constants.SWAGGER_SCHEME'), config('l5-swagger.constants.SWAGGER_HOST'), config('l5-swagger.routes.docs'), config('l5-swagger.paths.docs_json')) !!}",
             operationsSorter: {!! isset($operationsSorter) ? '"' . $operationsSorter . '"' : 'null' !!},
             configUrl: {!! isset($additionalConfigUrl) ? '"' . $additionalConfigUrl . '"' : 'null' !!},
             validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
