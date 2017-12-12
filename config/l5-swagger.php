@@ -180,7 +180,7 @@ return [
     |--------------------------------------------------------------------------
      */
     'constants'     => [
-        'SWAGGER_HOST' => env('SWAGGER_HOST', 'http://localhost:8000'),
+        'SWAGGER_HOST'   => env('SWAGGER_HOST', 'http://localhost:8000'),
         'SWAGGER_SCHEME' => env('SWAGGER_SCHEME', 'http'),
     ],
 ];
