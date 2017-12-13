@@ -41,17 +41,17 @@ window.Echo = require('laravel-echo');
 
 if (typeof io !== 'undefined') {
     console.log('Echo initialized');
-    // if (window.location.href.indexOf('localhost') > -1) {
-    //     window.Echo = new Echo({
-    //         broadcaster: 'socket.io',
-    //         host: `${window.location.hostname}:6001`,
-    //         namespace: 'shiraishi.Events'
-    //     });
-    // } else {
+    if (window.location.href.indexOf('localhost') > -1) {
+        window.Echo = new Echo({
+            broadcaster: 'socket.io',
+            host: `${window.location.hostname}:6001`,
+            namespace: 'shiraishi.Events'
+        });
+    } else {
         window.Echo = new Echo({
             broadcaster: 'socket.io',
             host: { path: '/socket.io' },
             namespace: 'shiraishi.Events'
         });
-    // }
+    }
 }
