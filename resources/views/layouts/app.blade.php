@@ -80,6 +80,6 @@
 @else
     <script src="/socket.io/socket.io.js"></script>
 @endif
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
