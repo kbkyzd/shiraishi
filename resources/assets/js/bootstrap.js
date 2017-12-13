@@ -50,7 +50,7 @@ if (typeof io !== 'undefined') {
     } else {
         window.Echo = new Echo({
             broadcaster: 'socket.io',
-            host: { path: '/socket.io' }.
+            host: { path: '/socket.io' },
             namespace: 'shiraishi.Events'
         });
     }
