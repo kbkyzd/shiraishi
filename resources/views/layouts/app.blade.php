@@ -78,7 +78,7 @@
 @if(app()->isLocal())
     <script src="//localhost:6001/socket.io/socket.io.js"></script>
 @else
-    <script src="/uws/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 @endif
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
