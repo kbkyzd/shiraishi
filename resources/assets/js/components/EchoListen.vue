@@ -23,17 +23,30 @@
         props: ['user'],
         data: () => {
             return {
-                'transactions': ''
+                'transactions': []
             }
         },
         mounted() {
+            Notification.requestPermission();
             Echo.private(`App.User.${this.user}`)
                 .listen('TransactionProcessed', e => {
                     console.log('Hit!');
                     console.table(e);
+                    this.spawnNotification('Received notification from ' + e.user.name, '/favicon.ico', 'Notification received');
+                    this.transactions.push(e);
                 });
 
             console.log(`Listening for events on App.User.${this.user}`);
+        },
+        methods: {
+            spawnNotification(body, icon, title) {
+                var options = {
+                    body: body,
+                    icon: icon
+                }
+                var n = new Notification(title, options);
+                setTimeout(n.close.bind(n), 5000);
+            }
         }
 
     }

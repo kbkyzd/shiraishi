@@ -41,9 +41,17 @@ window.Echo = require('laravel-echo');
 
 if (typeof io !== 'undefined') {
     console.log('Echo initialized');
-    window.Echo = new Echo({
-        broadcaster: 'socket.io',
-        host: `${window.location.hostname}:6001`,
-        namespace: 'shiraishi.Events'
-    });
+    if (window.location.href.indexOf('localhost') > -1) {
+        window.Echo = new Echo({
+            broadcaster: 'socket.io',
+            host: `${window.location.hostname}:6001`,
+            namespace: 'shiraishi.Events'
+        });
+    } else {
+        window.Echo = new Echo({
+            broadcaster: 'socket.io',
+            host: `${window.location.hostname}/uws`,
+            namespace: 'shiraishi.Events'
+        });
+    }
 }
