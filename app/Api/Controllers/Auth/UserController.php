@@ -10,7 +10,7 @@ use Dingo\Blueprint\Annotation\Method\Get;
 use shiraishi\Http\Controllers\Controller;
 use Dingo\Blueprint\Annotation\Method\Post;
 
-class ApiController extends Controller
+class UserController extends Controller
 {
     use Helpers;
 
