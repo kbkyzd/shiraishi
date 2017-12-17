@@ -10,14 +10,12 @@
  * This source file is subject to the 3-clause BSD License that is
  * bundled with this package in the LICENSE file.
  *
- * @package    Tags
  * @version    5.0.0
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
  * @copyright  (c) 2011-2017, Cartalyst LLC
  * @link       http://cartalyst.com
  */
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -39,7 +37,7 @@ class MigrationCartalystTagsCreateTables extends Migration
 
             $table->engine = 'InnoDB';
 
-            $table->index([ 'taggable_type', 'taggable_id' ]);
+            $table->index(['taggable_type', 'taggable_id']);
         });
 
         Schema::create('tags', function (Blueprint $table) {
@@ -60,7 +58,7 @@ class MigrationCartalystTagsCreateTables extends Migration
      */
     public function down()
     {
-        $tables = [ 'tagged', 'tags' ];
+        $tables = ['tagged', 'tags'];
 
         foreach ($tables as $table) {
             Schema::dropIfExists($table);
