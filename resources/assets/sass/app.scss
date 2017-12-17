@@ -1,9 +1,8 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 
-// Variables
-@import "variables";
+@import "~materialize-css/dist/css/materialize.css";
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+html {
+    font-family: 'Lato', sans-serif !important;
+}
