@@ -1,6 +1,5 @@
 <?php
 
-
 namespace tsumugi\Repositories;
 
 interface RepositoryInterface
