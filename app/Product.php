@@ -2,10 +2,14 @@
 
 namespace shiraishi;
 
+use Cartalyst\Tags\TaggableTrait;
+use Cartalyst\Tags\TaggableInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Product extends Model implements TaggableInterface
 {
+    use TaggableTrait;
+
     /**
      * @var array
      */

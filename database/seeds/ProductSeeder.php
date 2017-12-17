@@ -12,6 +12,19 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class, 50)->create();
+        $exampleTags = [
+            'clothes',
+            'food',
+            'music',
+            'toys',
+            'sports',
+            'electronics',
+        ];
+
+        $products = factory(Product::class, 50)->create();
+
+        foreach ($products as $product) {
+            $product->tag(array_random($exampleTags));
+        }
     }
 }
