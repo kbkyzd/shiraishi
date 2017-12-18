@@ -2,6 +2,7 @@
 
 namespace shiraishi\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -17,6 +18,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        // L5.6, today.
+        Blade::directive('csrf', function () {
+            return '<?php echo csrf_field(); ?>';
+        });
+
+        Blade::directive('method', function ($method) {
+            return "<?php echo method_field({$method}); ?>";
+        });
     }
 
     /**
