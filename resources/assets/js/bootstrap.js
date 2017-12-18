@@ -18,8 +18,7 @@ if (token) {
 
 /* Init Echo */
 if (typeof io !== 'undefined') {
-    console.log('Echo initialized');
-    if (window.location.href.indexOf('localhost') > -1) {
+    if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('127.0.0.1') > -1) {
         window.Echo = new Echo({
             broadcaster: 'socket.io',
             host: `${window.location.hostname}:6001`,
