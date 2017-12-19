@@ -32,8 +32,8 @@ script:
     - yarn run prod
     - ./vendor/bin/phpunit --coverage-clover coverage.xml
 
-  after_script:
-    - ./vendor/bin/coveralls -v
+after_script:
+  - ./vendor/bin/coveralls -v
 
 notifications:
     email: false
