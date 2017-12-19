@@ -31,4 +31,14 @@ class JwtAuthenticationTest extends TestCase
                      'expires_in',
                  ]);
     }
+
+    public function it_denies_on_invalid_credentials()
+    {
+        $response = $this->postJson('/api/auth/login', [
+            'email'    => 'xd@xd.xd',
+            'password' => 'asdasd',
+        ]);
+
+        $response->assertStatus(401);
+    }
 }
