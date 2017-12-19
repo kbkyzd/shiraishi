@@ -29,10 +29,10 @@ install:
 
 script:
     - yarn run prod
-    - ./vendor/bin/phpunit --coverage-clover coverage.xml
+    - php ./vendor/bin/phpunit --coverage-clover coverage.xml
 
-after_script:
-  - ./vendor/bin/coveralls -v
+after_success:
+  - travis_retry php vendor/bin/php-coveralls -v
 
 notifications:
     email: false
