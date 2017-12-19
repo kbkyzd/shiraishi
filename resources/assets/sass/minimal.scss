@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+@import "backend/overrides";
+@import "~materialize-css/sass/materialize";
+
+html {
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+}
+
+h5 {
+    font-weight: 400;
+}
+
+.container {
+    margin-top: 5em;
+    height: auto;
+    @media #{$extra-large-and-up} {
+        width: 30%;
+    }
+
+    @media #{$large-and-up} {
+        width: 45%;
+    }
+
+    @media #{$medium-and-down} {
+        width: 60%;
+    }
+
+    @media #{$small-and-down} {
+        width: 100%;
+    }
+}
+
+.tabs .indicator {
+    background-color: #e0f2f1;
+    height: 60px;
+    opacity: 0.3;
+}
+
+.form-container {
+    padding: 10px 40px 40px;
+}
+
+.confirmation-tabs-btn {
+    position: absolute;
+}
+
+#fss-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -9999;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #FFF !important;
+}
