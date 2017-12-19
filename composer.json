@@ -5,6 +5,7 @@
     "type": "project",
     "require": {
         "php": ">=7.1",
+        "albertcht/invisible-recaptcha": "^1.8",
         "cakephp/chronos": "^1.1",
         "cartalyst/tags": "^5.0",
         "darkaonline/l5-swagger": "5.5.*",
