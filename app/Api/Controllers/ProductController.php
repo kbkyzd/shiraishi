@@ -74,6 +74,7 @@ class ProductController extends Controller
         $product->update([
             'name'        => $request->name,
             'description' => $request->description,
+            'price'       => $request->price,
         ]);
 
         return $this->created($product);
