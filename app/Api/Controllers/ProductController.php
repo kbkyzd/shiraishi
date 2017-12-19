@@ -2,6 +2,7 @@
 
 namespace shiraishi\Api\Controllers;
 
+use shiraishi\Http\Requests\ProductRules;
 use shiraishi\Product;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
@@ -32,10 +33,10 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \shiraishi\Http\Requests\ProductRules $request
      * @return \Dingo\Api\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRules $request)
     {
         $user = $request->user();
 
@@ -62,13 +63,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \shiraishi\Product       $product
+     * @param \shiraishi\Http\Requests\ProductRules $request
+     * @param \shiraishi\Product                    $product
      * @return \Dingo\Api\Http\Response
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRules $request, Product $product)
     {
         $this->authorize($product);
 
