@@ -20,6 +20,7 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./tsumugi</directory>
         </whitelist>
     </filter>
     <php>
