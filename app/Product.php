@@ -16,6 +16,7 @@ class Product extends Model implements TaggableInterface
     protected $fillable = [
         'name',
         'description',
+        'price',
     ];
 
     /**
