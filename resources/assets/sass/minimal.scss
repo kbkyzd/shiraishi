@@ -3,16 +3,12 @@
 @import "backend/overrides";
 @import "~materialize-css/sass/materialize";
 
+$pearly-white-overlay: #d5e6e5;
+$anchor-color: color('orange', 'darken-2');
+$error-text: color('red', 'base');
+
 html {
     font-family: 'Lato', sans-serif;
-}
-
-body {
-    background: #f5f5f5;
-}
-
-h5 {
-    font-weight: 400;
 }
 
 .container {
@@ -36,17 +32,13 @@ h5 {
 }
 
 .tabs .indicator {
-    background-color: #e0f2f1;
+    background-color: $pearly-white-overlay;
     height: 60px;
-    opacity: 0.3;
+    opacity: 0.15;
 }
 
 .form-container {
     padding: 10px 40px 40px;
-}
-
-.confirmation-tabs-btn {
-    position: absolute;
 }
 
 #fss-container {
@@ -65,4 +57,21 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: #FFF !important;
+}
+
+a {
+    color: $anchor-color;
+    &:hover {
+        color: lighten($anchor-color, 10%);
+    }
+}
+
+.btn {
+    font-weight: 700;
+    color: color('grey', 'darken-4');
+}
+
+.error {
+    font-weight: 700;
+    color: $error-text;
 }

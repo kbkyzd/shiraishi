@@ -1,77 +1,54 @@
-@extends('layouts.app')
+@extends('layouts.minimal')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+    <div class="container white z-depth-2">
+        <ul class="tabs tabs-fixed-width pink darken-3">
+            <li class="tab col s6"><a class="white-text" target="_self" href="{{ route('login') }}">login</a></li>
+            <li class="tab col s6"><a class="white-text active">register</a></li>
+        </ul>
+        <div id="register" class="col s12 grey darken-4">
+            <form class="col s12" action="{{ route('register') }}" method="POST">
+                @csrf
+                <div class="form-container">
+                    <h3 class="white-text">Hello.</h3>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" name="name" class="validate white-text {{ $errors->has('name') ? 'invalid' : '' }}">
+                            <label for="name">Name</label>
+                            @if($errors->has('name'))
+                                <p class="error">{{ $errors->first('name') }}</p>
+                            @endif
                         </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" name="email" class="validate white-text {{ $errors->has('email') ? 'invalid' : '' }}">
+                            <label for="email">Email</label>
+                            @if($errors->has('email'))
+                                <p class="error">{{ $errors->first('email') }}</p>
+                            @endif
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" name="password" class="validate white-text {{ $errors->has('password') ? 'invalid' : '' }}">
+                            <label for="password">Password</label>
+                            @if($errors->has('password'))
+                                <p class="error">{{ $errors->first('password') }}</p>
+                            @endif
                         </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password-confirm" type="password" class="validate white-text" name="password_confirmation">
+                            <label for="password-confirm">Password Confirmation</label>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="center">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Register</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</div>
 @endsection
