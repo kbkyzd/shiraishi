@@ -11,5 +11,7 @@ $factory->define(shiraishi\Product::class, function (Faker $faker) {
         'user_id'     => $faker->randomElement($users),
         'name'        => $faker->company,
         'description' => $faker->paragraph(),
+        // Currency is stored in ints here.
+        'price'       => $faker->randomNumber(5),
     ];
 });
