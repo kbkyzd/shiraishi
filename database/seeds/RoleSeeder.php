@@ -1,5 +1,6 @@
 <?php
 
+use shiraishi\Acl\Role;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
