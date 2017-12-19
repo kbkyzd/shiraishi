@@ -42,6 +42,7 @@ class ProductController extends Controller
         $product = $user->products()->create([
             'name'        => $request->name,
             'description' => $request->description,
+            'price'       => $request->price,
         ]);
 
         return $this->created($product);
