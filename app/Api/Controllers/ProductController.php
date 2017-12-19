@@ -22,10 +22,18 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        // TODO: Proper validation
         $itemsPerPage = $this->limit($request->limit);
+        $filterByUser = $request->merchant_id;
+
+        $product = Product::latest();
+
+        if (is_numeric($filterByUser)) {
+            $product->where('user_id', $filterByUser);
+        }
 
         return $this->response->paginator(
-            Product::latest()->paginate($itemsPerPage),
+            $product->paginate($itemsPerPage),
             new ProductTransformer()
         );
     }
