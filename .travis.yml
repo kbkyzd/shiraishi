@@ -21,6 +21,7 @@ before_script:
     - mysql -e 'CREATE DATABASE travis_testing'
     - cp .env.travis .env
     - php artisan key:generate
+    - php artisan jwt:secret
     - php artisan migrate --seed
 
 install:
