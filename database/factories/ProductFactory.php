@@ -4,7 +4,8 @@ use shiraishi\User;
 use Faker\Generator as Faker;
 
 $factory->define(shiraishi\Product::class, function (Faker $faker) {
-    $users = User::pluck('id')
+    $users = User::role('merchant')
+                 ->pluck('id')
                  ->toArray();
 
     return [
