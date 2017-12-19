@@ -2,7 +2,9 @@
 
 namespace shiraishi\Providers;
 
+use shiraishi\Product;
 use Laravel\Horizon\Horizon;
+use shiraishi\Policies\ProductPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'shiraishi\Model' => 'shiraishi\Policies\ModelPolicy',
+        Product::class => ProductPolicy::class,
     ];
 
     /**
