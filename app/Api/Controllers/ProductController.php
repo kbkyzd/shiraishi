@@ -2,11 +2,11 @@
 
 namespace shiraishi\Api\Controllers;
 
-use shiraishi\Http\Requests\ProductRules;
 use shiraishi\Product;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use tsumugi\Foundation\Pagination;
+use shiraishi\Http\Requests\ProductRules;
 use shiraishi\Http\Controllers\Controller;
 use shiraishi\Transformers\ProductTransformer;
 
