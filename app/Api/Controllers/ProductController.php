@@ -25,7 +25,7 @@ class ProductController extends Controller
         $itemsPerPage = $this->limit($request->limit);
 
         return $this->response->paginator(
-            Product::paginate($itemsPerPage),
+            Product::latest()->paginate($itemsPerPage),
             new ProductTransformer()
         );
     }
