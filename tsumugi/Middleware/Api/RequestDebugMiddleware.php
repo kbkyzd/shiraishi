@@ -16,10 +16,6 @@ class RequestDebugMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (app()->environment('production')) {
-            return $next($request);
-        }
-
         return tap($next($request), function () use ($request) {
             Log::debug('Request', [
                 'request' => $request,
