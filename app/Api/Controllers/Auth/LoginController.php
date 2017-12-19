@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use Swagger\Annotations as SWG;
 use Dingo\Blueprint\Annotation\Response;
-use Dingo\Blueprint\Annotation\Method\Get;
 use shiraishi\Http\Controllers\Controller;
 use Dingo\Blueprint\Annotation\Method\Post;
 
-class UserController extends Controller
+class LoginController extends Controller
 {
     use Helpers;
 
@@ -146,7 +145,7 @@ class UserController extends Controller
      *
      * @param string $token
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return array
      */
     protected function respondWithToken($token)
     {
