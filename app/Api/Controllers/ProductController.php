@@ -5,37 +5,35 @@ namespace shiraishi\Api\Controllers;
 use shiraishi\Product;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
+use tsumugi\Foundation\Pagination;
 use shiraishi\Http\Controllers\Controller;
+use shiraishi\Transformers\ProductTransformer;
 
 class ProductController extends Controller
 {
-    use Helpers;
+    use Helpers, Pagination;
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Dingo\Api\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Product::paginate(10);
-    }
+        $itemsPerPage = $this->limit($request->limit);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->response->paginator(
+            Product::paginate($itemsPerPage),
+            new ProductTransformer()
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
     {
@@ -46,7 +44,7 @@ class ProductController extends Controller
             'description' => $request->description,
         ]);
 
-        return $this->accepted($product);
+        return $this->created($product);
     }
 
     /**
@@ -57,18 +55,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return $this->response->array($product);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \shiraishi\Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
+        return $this->response->item($product, new ProductTransformer());
     }
 
     /**
@@ -76,36 +63,47 @@ class ProductController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \shiraishi\Product       $product
-     * @return \Illuminate\Http\Response
+     * @return \Dingo\Api\Http\Response
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Product $product)
     {
+        $this->authorize($product);
+
         $product->update([
             'name'        => $request->name,
             'description' => $request->description,
         ]);
 
-        return $this->accepted($product);
+        return $this->created($product);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param \shiraishi\Product $product
-     * @return \Illuminate\Http\Response
+     * @return \Dingo\Api\Http\Response
+     *
+     * @throws \Exception
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Product $product)
     {
-        //
+        $this->authorize($product);
+
+        $product->delete();
+
+        return $this->response->accepted();
     }
 
     /**
      * @param \shiraishi\Product $product
      * @return \Dingo\Api\Http\Response
      */
-    protected function accepted(Product $product)
+    protected function created(Product $product)
     {
-        return $this->response->accepted(
+        return $this->response->created(
             route('products.show', [
                 'product' => $product->id,
             ]),
