@@ -18,13 +18,13 @@ trait Pagination
             return $min;
         }
 
-        switch ($items) {
-            case $items > $max:
-                return $max;
-            case $items < $min:
-                return $min;
-            default:
-                return $items;
+        if ($items >= $max) {
+            return $max;
         }
+        if ($items <= $min) {
+            return $min;
+        }
+
+        return $items;
     }
 }
