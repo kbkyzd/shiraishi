@@ -36,7 +36,7 @@
                         <label class="grey-text text-lighten-1" for="remember">Remember me</label>
                         <br>
                         <br>
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+                        <button class="btn waves-effect waves-light" type="submit">Login</button>
                         <br>
                         <br>
                         <a href="{{ route('password.request') }}">Forgot your password?</a>
