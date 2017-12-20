@@ -11,10 +11,10 @@ abstract class TestCase extends BaseTestCase
     /**
      * Call the given URI with a JSON request.
      *
-     * @param  string  $method
-     * @param  string  $uri
-     * @param  array  $data
-     * @param  array  $headers
+     * @param string $method
+     * @param string $uri
+     * @param array  $data
+     * @param array  $headers
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     public function json($method, $uri, array $data = [], array $headers = [])
@@ -25,12 +25,18 @@ abstract class TestCase extends BaseTestCase
 
         $headers = array_merge([
             'CONTENT_LENGTH' => mb_strlen($content, '8bit'),
-            'CONTENT_TYPE' => 'application/json',
-            'Accept' => 'application/x.shiraishi.v1+json',
+            'CONTENT_TYPE'   => 'application/json',
+            'Accept'         => 'application/x.shiraishi.v1+json',
         ], $headers);
 
         return $this->call(
-            $method, $uri, [], [], $files, $this->transformHeadersToServerVars($headers), $content
+            $method,
+            $uri,
+            [],
+            [],
+            $files,
+            $this->transformHeadersToServerVars($headers),
+            $content
         );
     }
 }
