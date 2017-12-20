@@ -16,7 +16,7 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Laravel');
+                    ->assertSee('白石');
         });
     }
 
@@ -26,7 +26,7 @@ class ExampleTest extends DuskTestCase
             $browser->visit('login')
                     ->type('email', 'test@test.test')
                     ->type('password', 'secret')
-                    ->press('Login')
+                    ->press('LOGIN')
                     ->assertSee('These credentials do not match our records');
         });
     }
