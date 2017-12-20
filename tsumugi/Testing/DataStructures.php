@@ -2,14 +2,10 @@
 
 namespace tsumugi\Testing;
 
-<<<<<<< Updated upstream
-||||||| merged common ancestors
-
-=======
 /** @codeCoverageIgnore */
->>>>>>> Stashed changes
 trait DataStructures
 {
+
     /**
      * @var array
      */
