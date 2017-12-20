@@ -4,28 +4,12 @@ namespace Tests\Feature;
 
 use shiraishi\User;
 use Tests\TestCase;
+use tsumugi\Testing\JwtAuthentication;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class JwtAuthenticationTest extends TestCase
 {
-    use RefreshDatabase;
-
-    /**
-     * @var \shiraishi\User
-     */
-    protected $user;
-
-    /**
-     * @var string
-     */
-    protected $token;
-
-    /**
-     * @var array
-     */
-    protected $defaultHeaders = [
-        'Accept' => 'application/x.shiraishi.v1+json',
-    ];
+    use RefreshDatabase, JwtAuthentication;
 
     /**
      * @var array
@@ -115,22 +99,5 @@ class JwtAuthenticationTest extends TestCase
                      'message'     => 'Token invalidated.',
                      'status_code' => 200,
                  ]);
-    }
-
-    /**
-     * "Log" the user in.
-     *
-     * @return void
-     *
-     * @throws \Exception
-     */
-    protected function generateValidJwtToken()
-    {
-        $response = $this->postJson('/api/auth/login', [
-            'email'    => $this->user->email,
-            'password' => 'changeme',
-        ]);
-
-        $this->token = $response->decodeResponseJson()['access_token'];
     }
 }
