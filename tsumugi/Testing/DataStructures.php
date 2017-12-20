@@ -5,7 +5,6 @@ namespace tsumugi\Testing;
 /** @codeCoverageIgnore */
 trait DataStructures
 {
-
     /**
      * @var array
      */
