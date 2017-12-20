@@ -1,0 +1,16 @@
+preset: laravel
+
+enabled:
+    - "concat_with_spaces"
+
+disabled:
+    - "concat_without_spaces"
+
+finder:
+  exclude:
+    - "public"
+    - "resources"
+    - "Annotations"
+
+  name:
+    - "*.php"
