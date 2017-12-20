@@ -1,12 +1,9 @@
 <?php
 
-
 namespace tsumugi\Testing;
-
 
 trait DataStructures
 {
-
     /**
      * @var array
      */
