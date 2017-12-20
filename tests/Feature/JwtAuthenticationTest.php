@@ -4,29 +4,13 @@ namespace Tests\Feature;
 
 use shiraishi\User;
 use Tests\TestCase;
+use tsumugi\Testing\DataStructures;
 use tsumugi\Testing\JwtAuthentication;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class JwtAuthenticationTest extends TestCase
 {
-    use RefreshDatabase, JwtAuthentication;
-
-    /**
-     * @var array
-     */
-    private $blacklistedToken = [
-        'message'     => 'The token has been blacklisted',
-        'status_code' => 401,
-    ];
-
-    /**
-     * @var array
-     */
-    private $accessTokenStructure = [
-        'access_token',
-        'token_type',
-        'expires_in',
-    ];
+    use RefreshDatabase, JwtAuthentication, DataStructures;
 
     public function setUp()
     {
