@@ -5,22 +5,12 @@ use Swagger\Annotations as SWG;
 /**
  * @SWG\Tag(
  *   name="Authentication",
- *   description="Everything about your Pets",
- *   @SWG\ExternalDocumentation(
- *     description="Find out more",
- *     url="http://swagger.io"
- *   )
+ *   description="Everything about Authenticating with the API",
  * )
  * @SWG\Tag(
- *   name="store",
- *   description="Access to Petstore orders"
+ *   name="Products"
  * )
  * @SWG\Tag(
- *   name="user",
- *   description="Operations about user",
- *   @SWG\ExternalDocumentation(
- *     description="Find out more about our store",
- *     url="http://swagger.io"
- *   )
+ *   name="Feed"
  * )
  */

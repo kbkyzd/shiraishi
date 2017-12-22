@@ -70,23 +70,6 @@ class LoginController extends Controller
     }
 
     /**
-     * Get the currently authenticated user.
-     *
-     * @SWG\Get(
-     *     path="/auth/me",
-     *     security={
-     *          {"jwt": {}},
-     *     },
-     *     @SWG\Response(response=200, description="Successful Operation"),
-     *     @SWG\Response(response=401, description="Token has expired", @SWG\Schema(ref="#/definitions/TokenExpiry"))
-     * )
-     */
-    public function me()
-    {
-        return $this->response->array($this->guard()->user());
-    }
-
-    /**
      * Log the user out.
      *
      * User is "logged out" by invalidating the token.
@@ -94,6 +77,7 @@ class LoginController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      * @SWG\Post(
+     *     tags={"Authentication"},
      *     path="/auth/logout",
      *     security={
      *         {"jwt": {}},
@@ -127,9 +111,30 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      *
-     * @Post("/refresh")
-     * @Request(identifier="Refresh")
-     * @Response(200, body={"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ", "token_type": "Bearer", "expires_in": 3600})
+     * @SWG\Post(
+     *     tags={"Authentication"},
+     *     path="/auth/refresh",
+     *     security={
+     *         {"jwt": {}},
+     *     },
+     *     @SWG\Response(
+     *         response=200,
+     *         description="A new token is generated, existing token included in the request is blacklisted.",
+     *          @SWG\Schema(
+     *              @SWG\Property(property="access_token", description="JWT Access Token"),
+     *              @SWG\Property(property="token_type", description="Bearer"),
+     *              @SWG\Property(property="expires_in", description="Issued token expiry in minutes")
+     *          ),
+     *          examples={
+     *              "application/json": {
+     *                  "access_token": "JWT Token Here",
+     *                  "token_type": "bearer",
+     *                  "expires_in": 60
+     *               }
+     *          }
+     *     ),
+     *     @SWG\Response(response=401, description="Invalid credentials.")
+     * )
      */
     public function refresh()
     {
@@ -138,6 +143,24 @@ class LoginController extends Controller
                 $this->guard()->refresh()
             )
         );
+    }
+
+    /**
+     * Get the currently authenticated user.
+     *
+     * @SWG\Get(
+     *     tags={"Authentication"},
+     *     path="/auth/me",
+     *     security={
+     *          {"jwt": {}},
+     *     },
+     *     @SWG\Response(response=200, description="Successful Operation"),
+     *     @SWG\Response(response=401, description="Token has expired", @SWG\Schema(ref="#/definitions/TokenExpiry"))
+     * )
+     */
+    public function me()
+    {
+        return $this->response->array($this->guard()->user());
     }
 
     /**
