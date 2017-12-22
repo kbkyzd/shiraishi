@@ -455,7 +455,6 @@
 
         .swagger-ui .response-col_description__inner span {
             font-size: 12px;
-            font-style: italic;
             display: block;
             margin: 10px 0;
             padding: 10px;
@@ -871,7 +870,6 @@
 
         .swagger-ui .checkbox p {
             font-weight: 400 !important;
-            font-style: italic;
             margin: 0 !important;
             font-family: Source Code Pro, monospace;
             font-weight: 600;
@@ -1265,7 +1263,6 @@
 
         .swagger-ui .parameter__in {
             font-size: 12px;
-            font-style: italic;
             font-family: Source Code Pro, monospace;
             font-weight: 600;
             color: #888
@@ -1277,7 +1274,7 @@
 
         .swagger-ui .topbar {
             padding: 8px 30px;
-            background-color: #89bf04
+            background-color: #0a90ef;
         }
 
         .swagger-ui .topbar .topbar-wrapper {
@@ -1655,7 +1652,7 @@
 
         .swagger-ui .topbar {
             padding: 8px 30px;
-            background-color: #3f51b5;
+            background-color: #0a90ef;
             box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .4), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
         }
 
@@ -1712,6 +1709,14 @@
             border: none;
             border-radius: 2px;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+        }
+
+        .swagger-ui .response-col_description__inner div.markdown, .swagger-ui .response-col_description__inner div.renderedMarkdown {
+            font-style: normal;
+        }
+
+        #swagger-ui > section > div.topbar > div > div > a > img {
+            display: none;
         }
     </style>
 </head>
