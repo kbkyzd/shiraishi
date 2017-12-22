@@ -9,6 +9,7 @@
         <div id="register" class="col s12 grey darken-4">
             <form class="col s12" action="{{ route('register') }}" method="POST">
                 @csrf
+                @captcha()
                 <div class="form-container">
                     <h3 class="white-text">Hello.</h3>
                     <div class="row">
