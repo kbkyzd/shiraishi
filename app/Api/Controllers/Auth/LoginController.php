@@ -7,7 +7,6 @@ use Dingo\Api\Routing\Helpers;
 use Swagger\Annotations as SWG;
 use Dingo\Blueprint\Annotation\Response;
 use shiraishi\Http\Controllers\Controller;
-use Dingo\Blueprint\Annotation\Method\Post;
 
 class LoginController extends Controller
 {
