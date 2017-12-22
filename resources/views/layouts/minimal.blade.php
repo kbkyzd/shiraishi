@@ -14,13 +14,12 @@
     <link href="{{ mix('css/minimal.css') }}" rel="stylesheet">
 </head>
 <body>
-<div id="app">
-    @yield('content')
-</div>
+@yield('content')
 <div id="fss-container">
 </div>
 </body>
 <script src="{{ mix('js/legacy.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+@stack('script')
 </body>
 </html>
