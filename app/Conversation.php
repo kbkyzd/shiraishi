@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Conversation extends Model
 {
     /**
+     * Participants of the conversation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function participants()
@@ -15,14 +17,8 @@ class Conversation extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function chat()
-    {
-        return $this->hasMany(Chat::class);
-    }
-
-    /**
+     * Messages in the conversation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function messages()
