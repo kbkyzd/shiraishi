@@ -17,7 +17,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -26,7 +28,8 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -55,5 +58,39 @@ class User extends Authenticatable implements JWTSubject
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class, 'conversation_participants', 'user_id', 'conversation_id');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function participatingIn()
+    {
+        return $this->conversations()
+                    ->pluck('id');
+    }
+
+    /**
+     * @param \shiraishi\User $user
+     * @return \shiraishi\Chat
+     */
+    public function hasAConversationWith(User $user)
+    {
+        if ($this->id === $user->id) {
+            return;
+        }
+
+        foreach ($this->conversations as $chat) {
+            if ($chat->participants->pluck('id')->contains($user->id)) {
+                return $chat;
+            }
+        }
     }
 }

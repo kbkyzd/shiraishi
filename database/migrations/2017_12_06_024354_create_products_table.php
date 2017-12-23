@@ -19,12 +19,18 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->unsignedBigInteger('price');
+            $table->unsignedInteger('stock')
+                  ->default(0);
+            $table->string('image')
+                  ->nullable();
 
             $table->timestamps();
 
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users');
+            $table->index('created_at');
+            $table->index('updated_at');
         });
     }
 

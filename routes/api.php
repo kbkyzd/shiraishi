@@ -33,5 +33,10 @@ $api->version('v1', [
     $api->group(['middleware' => 'api.auth'], function (Router $api) {
         $api->resource('products', 'ProductController');
         $api->resource('transaction', 'TransactionController');
+
+        $api->group(['prefix' => 'chat'], function (Router $api) {
+            $api->get('{recipient}', 'ChatController@index');
+            $api->post('{recipient}', 'ChatController@store');
+        });
     });
 });
