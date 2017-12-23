@@ -81,7 +81,7 @@ class User extends Authenticatable implements JWTSubject
      * @param \shiraishi\User $user
      * @return \shiraishi\Chat
      */
-    public function hasAConversationWith(User $user)
+    public function hasAConversationWith(self $user)
     {
         if ($this->id === $user->id) {
             return;
