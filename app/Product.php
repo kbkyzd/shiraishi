@@ -20,6 +20,8 @@ class Product extends Model implements TaggableInterface
     ];
 
     /**
+     * Merchant of the product.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

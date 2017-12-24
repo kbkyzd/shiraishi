@@ -69,6 +69,8 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * Conversations the uses is part of.
+     *
      * @return \Illuminate\Support\Collection
      */
     public function participatingIn()

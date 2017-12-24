@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Chat extends Model
 {
     /**
+     * Conversation the message belongs to.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function conversation()
@@ -15,6 +17,8 @@ class Chat extends Model
     }
 
     /**
+     * Sender of the message.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function sender()
