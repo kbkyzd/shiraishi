@@ -8,7 +8,7 @@ trait HasChat
 {
     /**
      * @param \shiraishi\User $recipient
-     * @return \shiraishi\Chat|null
+     * @return \shiraishi\Conversation|null
      */
     public function hasAConversationWith(User $recipient)
     {
@@ -16,9 +16,9 @@ trait HasChat
             return null;
         }
 
-        foreach ($this->conversations as $chat) {
-            if ($chat->participants->pluck('id')->contains($recipient->id)) {
-                return $chat;
+        foreach ($this->conversations as $conversation) {
+            if ($conversation->participants->pluck('id')->contains($recipient->id)) {
+                return $conversation;
             }
         }
     }
