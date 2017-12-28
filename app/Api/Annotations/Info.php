@@ -40,8 +40,57 @@ use Swagger\Annotations as SWG;
  *         ),
  *         example={
  *             "message": "Token has expired",
- *              "status_code": 401
+ *             "status_code": 401
  *         }
  *     ),
+ *     @SWG\Definition(
+ *         definition="Paginator",
+ *         @SWG\Property(
+ *             property="total",
+ *             type="integer",
+ *         ),
+ *         @SWG\Property(
+ *             property="count",
+ *             type="integer",
+ *         ),
+ *         @SWG\Property(
+ *             property="per_page",
+ *             type="integer",
+ *         ),
+ *         @SWG\Property(
+ *             property="current_page",
+ *             type="integer",
+ *         ),
+ *         @SWG\Property(
+ *             property="total_pages",
+ *             type="integer",
+ *         )
+ *     ),
+ *     @SWG\Definition(
+ *         definition="ChatUser",
+ *         @SWG\Property(property="id", type="integer"),
+ *         @SWG\Property(property="name", type="string"),
+ *         @SWG\Property(property="email", type="string")
+ *     ),
+ *     @SWG\Definition(
+ *         definition="MetaExample",
+ *         example={
+ *             "meta": {
+ *                 "pagination": {
+ *                     "total": 1,
+ *                     "count": 1,
+ *                     "per_page": 5,
+ *                     "current_page": 1,
+ *                     "total_pages": 1,
+ *                     "links": {
+ *                          {
+ *                              "prev": "http://localhost:8000/api/chat/1?page=3",
+ *                              "next": "http://localhost:8000/api/chat/1?page=5"
+ *                          }
+ *                     }
+ *                  }
+ *             }
+ *         }
+ *     )
  * )
  */

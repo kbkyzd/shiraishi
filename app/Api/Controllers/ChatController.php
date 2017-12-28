@@ -21,6 +21,11 @@ class ChatController extends Controller
      */
     protected $user;
 
+    /**
+     * Set user and limit.
+     *
+     * @param \Illuminate\Http\Request $request
+     */
     public function __construct(Request $request)
     {
         $this->user = $request->user('api');
