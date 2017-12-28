@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Conversation extends Model
 {
     /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
      * Participants of the conversation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
