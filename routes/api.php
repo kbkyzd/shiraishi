@@ -35,7 +35,8 @@ $api->version('v1', [
         $api->resource('transaction', 'TransactionController');
 
         $api->group(['prefix' => 'chat'], function (Router $api) {
-            $api->get('/{recipient?}', 'ChatController@index');
+            $api->get('/', 'ChatController@index');
+            $api->get('{recipient}', 'ChatController@show');
             $api->post('{recipient}', 'ChatController@store');
         });
     });
