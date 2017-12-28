@@ -18,6 +18,8 @@ class CreateConversationParticipantsTable extends Migration
                   ->unsigned();
             $table->integer('conversation_id')
                   ->unsigned();
+
+            $table->unique(['user_id', 'conversation_id']);
         });
     }
 
