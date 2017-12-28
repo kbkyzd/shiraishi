@@ -30,6 +30,7 @@ class Conversation extends Model
      */
     public function messages()
     {
-        return $this->hasMany(Chat::class, 'conversation_id');
+        return $this->hasMany(Chat::class, 'conversation_id')
+                    ->latest();
     }
 }
