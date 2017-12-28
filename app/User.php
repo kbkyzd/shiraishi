@@ -62,12 +62,14 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * Conversations the user is part of (has made).
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function conversations()
     {
         return $this->belongsToMany(Conversation::class, 'conversation_participants', 'user_id', 'conversation_id')
-                    ->latest();
+                    ->latest('updated_at');
     }
 
     /**
