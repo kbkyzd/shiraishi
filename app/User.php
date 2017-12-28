@@ -2,8 +2,8 @@
 
 namespace shiraishi;
 
-use Spatie\Permission\Traits\HasRoles;
 use tsumugi\Social\HasChat;
+use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
