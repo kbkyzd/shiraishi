@@ -5,6 +5,11 @@ namespace tsumugi\Foundation;
 trait Pagination
 {
     /**
+     * @var int
+     */
+    protected $perPage;
+
+    /**
      * Determine how many pages should the API return.
      *
      * @param int $items
