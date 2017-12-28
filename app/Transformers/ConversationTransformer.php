@@ -2,7 +2,6 @@
 
 namespace shiraishi\Transformers;
 
-use shiraishi\User;
 use shiraishi\Conversation;
 use League\Fractal\TransformerAbstract;
 
