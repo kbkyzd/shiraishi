@@ -15,6 +15,8 @@ class ChatController extends Controller
     use Helpers, Pagination;
 
     /**
+     * User making the request.
+     *
      * @var \shiraishi\User
      */
     protected $user;
@@ -27,7 +29,7 @@ class ChatController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display recent conversations.
      *
      * @return \Dingo\Api\Http\Response
      */
@@ -40,7 +42,7 @@ class ChatController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Send a new message to the specified recipient.
      *
      * @param \Illuminate\Http\Request $request
      * @param \shiraishi\User          $recipient
