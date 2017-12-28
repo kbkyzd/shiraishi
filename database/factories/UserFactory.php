@@ -14,11 +14,9 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(shiraishi\User::class, function (Faker $faker) {
-    static $password;
-
     return [
-        'name'           => $faker->name,
-        'email'          => $faker->unique()->safeEmail,
-        'password'       => $password ?: $password = bcrypt('changeme'),
+        'name'     => $faker->name,
+        'email'    => $faker->unique()->safeEmail,
+        'password' => '$2y$10$91mBOtqPoPOz3oQeppATcOG0v97/btdAjZmR2GjPnogOMLEYsgcFS', // changeme
     ];
 });
