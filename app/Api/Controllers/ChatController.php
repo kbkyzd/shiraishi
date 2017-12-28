@@ -2,7 +2,6 @@
 
 namespace shiraishi\Api\Controllers;
 
-use shiraishi\Chat;
 use shiraishi\User;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;

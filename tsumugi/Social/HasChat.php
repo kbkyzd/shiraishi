@@ -14,7 +14,7 @@ trait HasChat
     public function hasAConversationWith(User $recipient)
     {
         if ($this->id === $recipient->id) {
-            return null;
+            return;
         }
 
         foreach ($this->conversations as $conversation) {
@@ -22,8 +22,6 @@ trait HasChat
                 return $conversation;
             }
         }
-
-        return null;
     }
 
     /**
