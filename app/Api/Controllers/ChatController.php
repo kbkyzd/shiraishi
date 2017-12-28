@@ -48,6 +48,8 @@ class ChatController extends Controller
      */
     public function store(Request $request, User $recipient)
     {
+        $this->excludeSelf($this->user->id, $recipient->id);
+
         if (! $chat = $this->user->hasAConversationWith($recipient)) {
             $chat = $this->user->createNewConversation($recipient);
         }
@@ -72,6 +74,7 @@ class ChatController extends Controller
      */
     public function show(User $recipient)
     {
+        $this->excludeSelf($this->user->id, $recipient->id);
         $conversation = $this->user->hasAConversationWith($recipient);
 
         if (! $conversation) {
@@ -82,5 +85,12 @@ class ChatController extends Controller
                                  ->paginate($this->perPage);
 
         return $this->response->paginator($messages, new ChatTransformer());
+    }
+
+    protected function excludeSelf($from, $to)
+    {
+        if ($from === $to) {
+            return $this->response->errorBadRequest("That's your account! You can't send/receive messages to yourself :(");
+        }
     }
 }
