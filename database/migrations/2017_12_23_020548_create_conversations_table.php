@@ -18,6 +18,8 @@ class CreateConversationsTable extends Migration
             $table->string('name');
 
             $table->timestamps();
+
+            $table->index(['updated_at']);
         });
     }
 

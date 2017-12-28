@@ -28,6 +28,8 @@ class CreateChatsTable extends Migration
             $table->foreign('conversation_id')
                   ->references('id')
                   ->on('conversations');
+
+            $table->index(['created_at']);
         });
     }
 
