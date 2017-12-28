@@ -3,13 +3,14 @@
 namespace shiraishi;
 
 use Spatie\Permission\Traits\HasRoles;
+use tsumugi\Social\HasChat;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, HasChat;
 
     /**
      * The attributes that are mass assignable.
@@ -77,22 +78,5 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->conversations()
                     ->pluck('id');
-    }
-
-    /**
-     * @param \shiraishi\User $user
-     * @return \shiraishi\Chat
-     */
-    public function hasAConversationWith(self $user)
-    {
-        if ($this->id === $user->id) {
-            return;
-        }
-
-        foreach ($this->conversations as $chat) {
-            if ($chat->participants->pluck('id')->contains($user->id)) {
-                return $chat;
-            }
-        }
     }
 }
