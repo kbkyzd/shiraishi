@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use shiraishi\Chat;
-use shiraishi\Conversation;
-use shiraishi\ConversationParticipant;
 use shiraishi\User;
 use Faker\Factory as Faker;
+use shiraishi\Conversation;
+use Illuminate\Database\Seeder;
+use shiraishi\ConversationParticipant;
 
 class ChatSeeder extends Seeder
 {
