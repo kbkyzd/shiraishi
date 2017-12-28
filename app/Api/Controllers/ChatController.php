@@ -89,6 +89,10 @@ class ChatController extends Controller
         return $this->response->paginator($messages, new ChatTransformer());
     }
 
+    /**
+     * @param int $from
+     * @param int $to
+     */
     protected function excludeSelf($from, $to)
     {
         if ($from === $to) {
