@@ -12,7 +12,7 @@ class ChatTransformer extends TransformerAbstract
         return [
             'sender'       => [
                 'id'   => $chat->sender->id,
-                'name' => $chat->sender->email,
+                'name' => $chat->sender->name,
             ],
             'conversation' => [
                 'id'      => $chat->id,
