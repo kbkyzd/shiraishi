@@ -6,6 +6,10 @@ use League\Fractal\TransformerAbstract;
 
 class ProductTransformer extends TransformerAbstract
 {
+    /**
+     * @param \shiraishi\Product $product
+     * @return array
+     */
     public function transform($product)
     {
         return [
@@ -18,6 +22,7 @@ class ProductTransformer extends TransformerAbstract
                 'name'        => $product->name,
                 'description' => $product->description,
                 'price'       => $product->price,
+                'image'       => $product->image,
             ],
         ];
     }
