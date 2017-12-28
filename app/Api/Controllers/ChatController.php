@@ -9,6 +9,7 @@ use Dingo\Api\Routing\Helpers;
 use tsumugi\Foundation\Pagination;
 use shiraishi\Http\Controllers\Controller;
 use shiraishi\Transformers\ChatTransformer;
+use shiraishi\Transformers\ConversationTransformer;
 
 class ChatController extends Controller
 {
@@ -23,7 +24,7 @@ class ChatController extends Controller
     {
         $this->user = $request->user('api');
 
-        $this->perPage = $this->limit($request->limit, 1, 20);
+        $this->perPage = $this->limit($request->limit ?? 5, 1, 20);
     }
 
     /**
@@ -33,15 +34,18 @@ class ChatController extends Controller
      */
     public function index()
     {
-        return $this->response->array($this->user->conversations);
+        $conversations = $this->user->conversations()
+                                    ->paginate($this->perPage);
+
+        return $this->response->paginator($conversations, new ConversationTransformer());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param                          $recipient
-     * @return void
+     * @param \shiraishi\User          $recipient
+     * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request, User $recipient)
     {
@@ -54,7 +58,11 @@ class ChatController extends Controller
             'body'      => $request->message,
         ]);
 
-        return $message;
+        $conversation = $message->conversation;
+        $conversation->updated_at = now();
+        $conversation->save();
+
+        return $this->response->item($message, new ChatTransformer());
     }
 
     /**
@@ -75,28 +83,5 @@ class ChatController extends Controller
                                  ->paginate($this->perPage);
 
         return $this->response->paginator($messages, new ChatTransformer());
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \shiraishi\Chat          $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chat $chat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \shiraishi\Chat $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chat $chat)
-    {
-        //
     }
 }
