@@ -5,19 +5,35 @@ namespace shiraishi\Api\Controllers;
 use shiraishi\Chat;
 use shiraishi\User;
 use Illuminate\Http\Request;
+use Dingo\Api\Routing\Helpers;
+use tsumugi\Foundation\Pagination;
 use shiraishi\Http\Controllers\Controller;
+use shiraishi\Transformers\ChatTransformer;
 
 class ChatController extends Controller
 {
+    use Helpers, Pagination;
+
+    /**
+     * @var \shiraishi\User
+     */
+    protected $user;
+
+    public function __construct(Request $request)
+    {
+        $this->user = $request->user('api');
+
+        $this->perPage = $this->limit($request->limit, 1, 20);
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @param $recipient
-     * @return void
+     * @return \Dingo\Api\Http\Response
      */
-    public function index($recipient)
+    public function index()
     {
-        //
+        return $this->response->array($this->user->conversations);
     }
 
     /**
@@ -29,22 +45,36 @@ class ChatController extends Controller
      */
     public function store(Request $request, User $recipient)
     {
-        /** @var \shiraishi\User $user */
-        $user = auth()->user();
-
-        if ($chat = $user->hasAConversationWith($recipient)) {
+        if (! $chat = $this->user->hasAConversationWith($recipient)) {
+            $chat = $this->user->createNewConversation($recipient);
         }
+
+        $message = $chat->messages()->create([
+            'sender_id' => $this->user->id,
+            'body'      => $request->message,
+        ]);
+
+        return $message;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \shiraishi\Chat $chat
+     * @param \shiraishi\User $recipient
      * @return \Illuminate\Http\Response
      */
-    public function show(Chat $chat)
+    public function show(User $recipient)
     {
-        //
+        $conversation = $this->user->hasAConversationWith($recipient);
+
+        if (! $conversation) {
+            return $this->response->errorNotFound("No available messages with {$recipient->name} (id: {$recipient->id})");
+        }
+
+        $messages = $conversation->messages()
+                                 ->paginate($this->perPage);
+
+        return $this->response->paginator($messages, new ChatTransformer());
     }
 
     /**
