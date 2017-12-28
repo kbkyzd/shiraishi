@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
-            "version": "v1.8",
+            "version": "v1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/albertcht/invisible-recaptcha.git",
-                "reference": "7c32eef12e4792a4d3ddb72a71a6a6965011c19d"
+                "reference": "8881e6e4b5c32c341911f0113828d843726007eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/albertcht/invisible-recaptcha/zipball/7c32eef12e4792a4d3ddb72a71a6a6965011c19d",
-                "reference": "7c32eef12e4792a4d3ddb72a71a6a6965011c19d",
+                "url": "https://api.github.com/repos/albertcht/invisible-recaptcha/zipball/8881e6e4b5c32c341911f0113828d843726007eb",
+                "reference": "8881e6e4b5c32c341911f0113828d843726007eb",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "php",
                 "recaptcha"
             ],
-            "time": "2017-09-30T07:27:34+00:00"
+            "time": "2017-12-24T12:50:49+00:00"
         },
         {
             "name": "anahkiasen/underscore-php",
@@ -163,20 +163,20 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "0621b191334d8dcb56907688986dd24eb8c38234"
+                "reference": "56d98330d366a469745848b07540373846c40561"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/0621b191334d8dcb56907688986dd24eb8c38234",
-                "reference": "0621b191334d8dcb56907688986dd24eb8c38234",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/56d98330d366a469745848b07540373846c40561",
+                "reference": "56d98330d366a469745848b07540373846c40561",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": "^5.5.9|^7"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1",
@@ -216,7 +216,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-04-27T01:27:49+00:00"
+            "time": "2017-12-25T22:42:18+00:00"
         },
         {
             "name": "cartalyst/tags",
@@ -1413,16 +1413,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.26",
+            "version": "v5.5.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d7e6a7aab600c5cfae595ea22074ac3c536cbc28"
+                "reference": "cfafae1f2043208390a7c984e3070696f4969605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d7e6a7aab600c5cfae595ea22074ac3c536cbc28",
-                "reference": "d7e6a7aab600c5cfae595ea22074ac3c536cbc28",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cfafae1f2043208390a7c984e3070696f4969605",
+                "reference": "cfafae1f2043208390a7c984e3070696f4969605",
                 "shasum": ""
             },
             "require": {
@@ -1543,7 +1543,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-12-18T14:15:59+00:00"
+            "time": "2017-12-26T16:24:40+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -2063,16 +2063,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89"
+                "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/08131e7ff29de6bb9f12275c7d35df71f25f4d89",
-                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/579f4ce846734a1cf55d6a531d00ca07a43e3cda",
+                "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda",
                 "shasum": ""
             },
             "require": {
@@ -2110,7 +2110,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-11-04T11:48:34+00:00"
+            "time": "2017-12-26T14:43:21+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2611,16 +2611,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.16",
+            "version": "v0.8.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "d4c8eab0683dc056f2ca54ca67f5388527c068b1"
+                "reference": "5069b70e8c4ea492c2b5939b6eddc78bfe41cfec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/d4c8eab0683dc056f2ca54ca67f5388527c068b1",
-                "reference": "d4c8eab0683dc056f2ca54ca67f5388527c068b1",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/5069b70e8c4ea492c2b5939b6eddc78bfe41cfec",
+                "reference": "5069b70e8c4ea492c2b5939b6eddc78bfe41cfec",
                 "shasum": ""
             },
             "require": {
@@ -2679,7 +2679,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-12-10T21:49:27+00:00"
+            "time": "2017-12-28T16:14:16+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -3015,16 +3015,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.7.0",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "7693dfe5bc51396247cacb10c1a3a27e5cd1fcf5"
+                "reference": "1646b270f84d6bdfd41acfe16e9eb9eab2d8c2f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/7693dfe5bc51396247cacb10c1a3a27e5cd1fcf5",
-                "reference": "7693dfe5bc51396247cacb10c1a3a27e5cd1fcf5",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/1646b270f84d6bdfd41acfe16e9eb9eab2d8c2f9",
+                "reference": "1646b270f84d6bdfd41acfe16e9eb9eab2d8c2f9",
                 "shasum": ""
             },
             "type": "library",
@@ -3068,7 +3068,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2017-12-16T08:36:21+00:00"
+            "time": "2017-12-23T08:03:30+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5626,16 +5626,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158"
+                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1174d9018191e93cb9d719edec01257fc05f8158",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
+                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
                 "shasum": ""
             },
             "require": {
@@ -5686,7 +5686,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-11-03T07:16:52+00:00"
+            "time": "2017-12-22T14:50:35+00:00"
         },
         {
             "name": "sebastian/diff",
