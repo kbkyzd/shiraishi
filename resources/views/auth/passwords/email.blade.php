@@ -15,7 +15,7 @@
                                 <p class="error">{{ $errors->first('email') }}</p>
                             @endif
                             @if (session('status'))
-                                <p class="green-text">{{ session('status') }}</p>
+                                <p class="green-text status">{{ session('status') }}</p>
                             @endif
                         </div>
                     </div>
