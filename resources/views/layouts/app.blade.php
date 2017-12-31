@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -20,7 +20,7 @@
 
 <!-- Scripts -->
 @if(app()->isLocal())
-    <script src="//localhost:6001/socket.io/socket.io.js"></script>
+    <script src="//{{ request()->getHttpHost() }}:6001/socket.io/socket.io.js"></script>
 @else
     <script src="/socket.io/socket.io.js"></script>
 @endif
