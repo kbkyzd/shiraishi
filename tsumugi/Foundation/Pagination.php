@@ -19,6 +19,7 @@ trait Pagination
      */
     protected function limit($items, $min = 5, $max = 30)
     {
+        $items = (int) $items;
         if (! is_numeric($items)) {
             return $min;
         }
