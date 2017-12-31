@@ -41,8 +41,11 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password-confirm" type="password" class="validate white-text" name="password_confirmation">
+                            <input id="password-confirm" type="password" class="validate white-text {{ $errors->has('password_confirmation') ? 'invalid' : '' }}" name="password_confirmation">
                             <label for="password-confirm">Password Confirmation</label>
+                            @if($errors->has('password_confirmation'))
+                                <p class="error">{{ $errors->first('password_confirmation') }}</p>
+                            @endif
                         </div>
                     </div>
                     <div class="center">

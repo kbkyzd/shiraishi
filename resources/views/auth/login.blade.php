@@ -13,7 +13,7 @@
                     <h3 class="white-text">Welcome back.</h3>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input class="white-text {{ $errors->has('email') ? 'invalid' : '' }}" type="text" name="email" id="email" required/>
+                            <input class="white-text {{ $errors->has('email') ? 'invalid' : '' }}" type="text" name="email" id="email" required autofocus/>
                             <label class="grey-text text-lighten-1" for="email">Email</label>
                             @if($errors->has('email'))
                                 <p class="error">{{ $errors->first('email') }}</p>
