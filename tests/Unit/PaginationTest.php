@@ -11,9 +11,6 @@ class PaginationTest extends TestCase
 
     public function testPaginationLimit()
     {
-        $discardsInvalidInput = $this->limit(str_random(1));
-        $this->assertSame(5, $discardsInvalidInput);
-
         $returnsMinimum = $this->limit(random_int(0, 4));
         $this->assertSame(5, $returnsMinimum);
 
