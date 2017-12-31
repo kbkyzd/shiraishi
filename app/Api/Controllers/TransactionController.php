@@ -4,9 +4,9 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Transaction;
 use Illuminate\Http\Request;
-use shiraishi\Http\Controllers\Controller;
+use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
-class TransactionController extends Controller
+class TransactionController extends ApiController
 {
     /**
      * Display a listing of the resource.

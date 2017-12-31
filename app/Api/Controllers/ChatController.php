@@ -4,32 +4,19 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\User;
 use Illuminate\Http\Request;
-use Dingo\Api\Routing\Helpers;
-use tsumugi\Foundation\Pagination;
-use shiraishi\Http\Controllers\Controller;
 use shiraishi\Transformers\ChatTransformer;
 use shiraishi\Transformers\ConversationTransformer;
+use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
-class ChatController extends Controller
+class ChatController extends ApiController
 {
-    use Helpers, Pagination;
-
     /**
-     * User making the request.
-     *
-     * @var \shiraishi\User
-     */
-    protected $user;
-
-    /**
-     * Set user and limit.
+     * Set limit.
      *
      * @param \Illuminate\Http\Request $request
      */
     public function __construct(Request $request)
     {
-        $this->user = $request->user('api');
-
         $this->perPage = $this->limit($request->limit ?? 5, 1, 20);
     }
 

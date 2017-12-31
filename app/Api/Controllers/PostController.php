@@ -4,9 +4,9 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Post;
 use Illuminate\Http\Request;
-use shiraishi\Http\Controllers\Controller;
+use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
-class PostController extends Controller
+class PostController extends ApiController
 {
     /**
      * Display a listing of the resource.

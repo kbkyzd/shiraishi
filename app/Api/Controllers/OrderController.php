@@ -4,9 +4,9 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Order;
 use Illuminate\Http\Request;
-use shiraishi\Http\Controllers\Controller;
+use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
-class OrderController extends Controller
+class OrderController extends ApiController
 {
     /**
      * Display a listing of the resource.

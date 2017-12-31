@@ -4,15 +4,21 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Product;
 use Illuminate\Http\Request;
-use Dingo\Api\Routing\Helpers;
-use tsumugi\Foundation\Pagination;
 use shiraishi\Http\Requests\ProductRules;
-use shiraishi\Http\Controllers\Controller;
 use shiraishi\Transformers\ProductTransformer;
+use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
-class ProductController extends Controller
+class ProductController extends ApiController
 {
-    use Helpers, Pagination;
+    /**
+     * Set limit.
+     *
+     * @param \Illuminate\Http\Request $request
+     */
+    public function __construct(Request $request)
+    {
+        $this->perPage = $this->limit($request->limit ?? 5, 1, 30);
+    }
 
     /**
      * Display a listing of the resource.
@@ -23,7 +29,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         // TODO: Proper validation
-        $itemsPerPage = $this->limit($request->limit);
         $filterByUser = $request->merchant_id;
 
         $product = Product::latest();
@@ -33,7 +38,7 @@ class ProductController extends Controller
         }
 
         return $this->response->paginator(
-            $product->paginate($itemsPerPage),
+            $product->paginate($this->perPage),
             new ProductTransformer()
         );
     }
@@ -46,9 +51,7 @@ class ProductController extends Controller
      */
     public function store(ProductRules $request)
     {
-        $user = $request->user();
-
-        $product = $user->products()->create([
+        $product = $this->user->products()->create([
             'name'        => $request->name,
             'description' => $request->description,
             'price'       => $request->price,
