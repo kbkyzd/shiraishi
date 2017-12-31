@@ -27,6 +27,7 @@ trait Pagination
         if ($items >= $max) {
             return $max;
         }
+
         if ($items <= $min) {
             return $min;
         }
