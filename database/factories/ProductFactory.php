@@ -14,6 +14,6 @@ $factory->define(shiraishi\Product::class, function (Faker $faker) {
         'description' => $faker->paragraph(),
         // Currency is stored in ints here.
         'price'       => $faker->randomNumber(5),
-        'image'       => sprintf('https://picsum.photos/400?image=%s', $faker->numberBetween(0, 1000)),
+        'image'       => sprintf('https://picsum.photos/400?image=%s', $faker->numberBetween(0, 400)),
     ];
 });
