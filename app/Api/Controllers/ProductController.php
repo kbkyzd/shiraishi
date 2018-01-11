@@ -18,6 +18,11 @@ class ProductController extends ApiController
     public function __construct(Request $request)
     {
         $this->perPage = $this->limit($request->limit ?? 5, 1, 30);
+        $this->middleware('api.auth')
+             ->except([
+                 'index',
+                 'show',
+             ]);
     }
 
     /**
