@@ -1,0 +1,14 @@
+$better-black: color('grey', 'darken-4');
+$himekawa-orange: color('orange', 'darken-4');
+
+.primary {
+    background-color: $himekawa-orange;
+}
+
+.primary-text {
+    color: $himekawa-orange;
+}
+
+.better-black {
+    color: $better-black;
+}

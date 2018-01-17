@@ -1,0 +1,57 @@
+@media #{$small-and-down} {
+    .container.with-table {
+        width: 100%;
+    }
+}
+
+.data-table {
+    thead {
+        color: color('shades', 'white') !important;
+        background-color: color('grey', 'darken-3');
+        border-bottom: none;
+    }
+
+    th, td {
+        padding: 15px 15px;
+        border-radius: 0;
+    }
+
+    th {
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 1.5em 15px;
+    }
+}
+
+.table-buttons > a > i.fa {
+    color: $better-black;
+    font-size: 20px;
+
+    &:hover {
+        color: lighten($better-black, 15%);
+    }
+}
+
+table {
+    a:not(.btn) {
+        color: $himekawa-orange;
+        &:hover {
+            color: lighten($himekawa-orange, 25%);
+        }
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear .25s, visibility .25s;
+}
+
+.trigger:hover .hidden {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear .25s, visibility .25s;
+}

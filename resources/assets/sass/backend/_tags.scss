@@ -1,0 +1,19 @@
+.tags {
+    padding: 3px 9px;
+    border-radius: 3px;
+    background: rgba(71, 87, 120, 0.1);
+    margin-right: 3px;
+    border-color: transparent;
+
+    i.fa {
+        margin-right: 5px;
+    }
+
+    &.warn {
+        background: color('orange', 'darken-4');
+    }
+
+    &.cools {
+        background: color('lime', 'darken-4');
+    }
+}

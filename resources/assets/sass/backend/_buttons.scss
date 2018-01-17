@@ -1,0 +1,13 @@
+.btn-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+    .btn:not(:last-child) {
+        border-right: none;
+    }
+
+    & > .btn:first-child {
+        margin-left: 0;
+    }
+}

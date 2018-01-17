@@ -1,0 +1,17 @@
+
+.CodeMirror-fullscreen, .editor-toolbar.fullscreen {
+    z-index: 1000;
+}
+
+.CodeMirror, .editor-preview-side {
+    ul:not(.browser-default) {
+        list-style-type: initial !important;
+        padding-left: 30px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px !important;
+    }
+
+    ul:not(.browser-default) li {
+        list-style-type: disc !important;
+    }
+}

@@ -3,6 +3,7 @@ try {
     window.$ = window.jQuery = require('jquery');
     window.axios = require('axios');
     window.Echo = require('laravel-echo');
+    window.SimpleMDE = require('simplemde');
 
     require('materialize-css');
 } catch (e) {

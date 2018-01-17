@@ -1,0 +1,16 @@
+.modal {
+    @media #{$medium-and-down} {
+        width: 100%;
+    }
+
+    .modal-footer {
+        padding: 0 10px;
+        .btn-flat {
+            margin-right: 0.5em;
+        }
+    }
+}
+
+h4 {
+    font-size: 1.9rem;
+}
