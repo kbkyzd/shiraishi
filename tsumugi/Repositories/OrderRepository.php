@@ -2,21 +2,24 @@
 
 namespace tsumugi\Repositories;
 
-class OrderRepository implements RepositoryInterface
+class TransactionRepository
 {
-    public function all()
+    /**
+     * @var \tsumugi\Repositories\TransactionRepository
+     */
+    protected $transaction;
+
+    /**
+     * OrderRepository constructor.
+     *
+     * @param \tsumugi\Repositories\TransactionRepository $transaction
+     */
+    public function __construct(TransactionRepository $transaction)
     {
+        $this->transaction = $transaction;
     }
 
-    public function first()
-    {
-    }
-
-    public function paginate()
-    {
-    }
-
-    public function find($id)
+    public function createOrder()
     {
     }
 }
