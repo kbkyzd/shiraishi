@@ -61,6 +61,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Product::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     /**
      * Conversations the user is part of (has made).
      *
