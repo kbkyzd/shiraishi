@@ -38,3 +38,7 @@ Route::get('job', function () {
 Route::get('firejob', function () {
     event(new shiraishi\Events\TransactionProcessed(User::find(1)));
 })->name('firejob');
+
+Route::prefix('admin')->group(function () {
+    Route::view('/', 'home');
+});

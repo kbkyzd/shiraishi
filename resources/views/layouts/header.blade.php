@@ -1,6 +1,9 @@
+@inject('git', 'tsumugi\Foundation\Version')
 <nav role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">dess</a>
+        <a id="logo-container" href="#" class="brand-logo">
+            dess <small style="font-size: 45%">#{{ $git->hash() }} (r{{ $git->revision() }})</small>
+        </a>
 
         <ul class="right hide-on-med-and-down">
             <ul id="userdropdown" class="dropdown-content">
