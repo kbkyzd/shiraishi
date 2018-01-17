@@ -8,6 +8,5 @@ class TwitterController extends ApiController
 {
     public function index()
     {
-        
     }
 }
