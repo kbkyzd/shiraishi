@@ -2,7 +2,7 @@
 
 namespace tsumugi\Repositories;
 
-class TransactionRepository
+class OrderRepository
 {
     /**
      * @var \tsumugi\Repositories\TransactionRepository
@@ -14,7 +14,7 @@ class TransactionRepository
      *
      * @param \tsumugi\Repositories\TransactionRepository $transaction
      */
-    public function __construct(TransactionRepository $transaction)
+    public function __construct(self $transaction)
     {
         $this->transaction = $transaction;
     }
