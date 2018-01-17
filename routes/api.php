@@ -42,5 +42,12 @@ $api->version('v1', [
             $api->post('{recipient}', 'ChatController@store')
                 ->where('recipient', '[0-9]+');
         });
+
+        $api->group(['prefix' => 'posts'], function (Router $api) {
+            $api->get('/', 'TwitterController@index')
+                ->name('feed.show');
+            $api->post('feed', 'TwitterController@store')
+                ->name('feed.store');
+        });
     });
 });
