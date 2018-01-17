@@ -37,8 +37,10 @@ $api->version('v1', [
 
         $api->group(['prefix' => 'chat'], function (Router $api) {
             $api->get('/', 'ChatController@index');
-            $api->get('{recipient}', 'ChatController@show');
-            $api->post('{recipient}', 'ChatController@store');
+            $api->get('{recipient}', 'ChatController@show')
+                ->where('recipient', '[0-9]+');
+            $api->post('{recipient}', 'ChatController@store')
+                ->where('recipient', '[0-9]+');
         });
     });
 });
