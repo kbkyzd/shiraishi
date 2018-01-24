@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/kbkyzd/shiraishi/master/public/shiraishix600.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kbkyzd/shiraishi/master/public/shiraishi-orgx600.png"></p>
 
 <p align="center">Shiraishi, Another school project.</p>
 <p align="center">
