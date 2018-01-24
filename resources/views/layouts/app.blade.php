@@ -10,7 +10,7 @@
 
     <title>@yield('title', 'ひめかわ')</title>
 
-    <!-- Styles -->
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

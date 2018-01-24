@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link href="{{ mix('css/minimal.css') }}" rel="stylesheet">
 </head>
 <body>
