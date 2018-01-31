@@ -7,6 +7,7 @@ use Dingo\Api\Routing\Helpers;
 use Swagger\Annotations as SWG;
 use Dingo\Blueprint\Annotation\Response;
 use shiraishi\Http\Controllers\Controller;
+use shiraishi\Transformers\UserTransformer;
 
 class LoginController extends Controller
 {
@@ -17,7 +18,7 @@ class LoginController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return void
+     * @return array|void
      *
      * @SWG\Post(
      *     tags={"Authentication"},
@@ -159,7 +160,10 @@ class LoginController extends Controller
      */
     public function me()
     {
-        return $this->response->array($this->guard()->user());
+        return $this->response->item(
+            $this->guard()->user(),
+            new UserTransformer()
+        );
     }
 
     /**
