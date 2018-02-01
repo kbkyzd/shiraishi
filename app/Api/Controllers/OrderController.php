@@ -4,10 +4,22 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Order;
 use Illuminate\Http\Request;
+use tsumugi\Repositories\OrderRepository;
+use shiraishi\Transformers\OrderTransformer;
 use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
 class OrderController extends ApiController
 {
+    /**
+     * @var \tsumugi\Repositories\OrderRepository
+     */
+    protected $orders;
+
+    public function __construct(OrderRepository $orders)
+    {
+        $this->orders = $orders;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,17 +27,9 @@ class OrderController extends ApiController
      */
     public function index()
     {
-        //
-    }
+        $orders = $this->orders->recent($this->user);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->response->paginator($orders, new OrderTransformer());
     }
 
     /**
@@ -36,7 +40,7 @@ class OrderController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        dd($request->orders);
     }
 
     /**
@@ -47,18 +51,7 @@ class OrderController extends ApiController
      */
     public function show(Order $order)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \shiraishi\Order $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
+        return $this->response->item($order, new OrderTransformer());
     }
 
     /**
@@ -69,17 +62,6 @@ class OrderController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \shiraishi\Order $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
     {
         //
     }
