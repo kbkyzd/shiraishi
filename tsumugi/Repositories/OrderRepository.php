@@ -39,6 +39,16 @@ class OrderRepository
                     ->paginate($perPage);
     }
 
+    public function pay(Order $order, User $user)
+    {
+        return tap($order, function (Order $order) use ($user) {
+            $order->user()->associate($user);
+            $order->processed_at = now();
+
+            $order->save();
+        });
+    }
+
     /**
      * @param                                                            $transactions
      * @param \shiraishi\User|\Illuminate\Contracts\Auth\Authenticatable $user
