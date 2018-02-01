@@ -39,6 +39,11 @@ class OrderRepository
                     ->paginate($perPage);
     }
 
+    /**
+     * @param \shiraishi\Order $order
+     * @param \shiraishi\User|\Illuminate\Contracts\Auth\Authenticatable  $user
+     * @return mixed
+     */
     public function pay(Order $order, User $user)
     {
         return tap($order, function (Order $order) use ($user) {
