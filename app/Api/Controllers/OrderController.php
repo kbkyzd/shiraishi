@@ -4,8 +4,10 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use tsumugi\Repositories\OrderRepository;
 use shiraishi\Transformers\OrderTransformer;
+use Dingo\Api\Exception\StoreResourceFailedException;
 use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
 class OrderController extends ApiController
@@ -40,7 +42,18 @@ class OrderController extends ApiController
      */
     public function store(Request $request)
     {
-        dd($request->orders);
+        $validator = Validator::make($request->all(), [
+            'orders.*.product_id' => 'required|distinct|exists:products,id',
+            'orders.*.quantity'   => 'required|numeric|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            throw new StoreResourceFailedException('Could not create a new order request', $validator->errors());
+        }
+
+        $order = $this->orders->create($request->orders, $this->user);
+
+        return $this->response->item($order, new OrderTransformer());
     }
 
     /**
