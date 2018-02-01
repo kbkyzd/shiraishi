@@ -25,7 +25,7 @@ class OrderController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function index()
     {
@@ -38,7 +38,7 @@ class OrderController extends ApiController
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
     {
@@ -60,7 +60,7 @@ class OrderController extends ApiController
      * Display the specified resource.
      *
      * @param \shiraishi\Order $order
-     * @return \Illuminate\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function show(Order $order)
     {
@@ -68,14 +68,13 @@ class OrderController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \shiraishi\Order         $order
-     * @return \Illuminate\Http\Response
+     * @param \shiraishi\Order $order
+     * @return \Dingo\Api\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function pay(Order $order)
     {
-        //
+        $order = $this->orders->pay($order, $this->user);
+
+        return $this->response->item($order, new OrderTransformer());
     }
 }
