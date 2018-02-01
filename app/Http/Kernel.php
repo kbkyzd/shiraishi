@@ -51,12 +51,14 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'apidebug'   => \tsumugi\Middleware\Api\RequestDebugMiddleware::class,
         'auth'       => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings'   => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can'        => \Illuminate\Auth\Middleware\Authorize::class,
         'guest'      => \shiraishi\Http\Middleware\RedirectIfAuthenticated::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role'       => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'apidebug'   => \tsumugi\Middleware\Api\RequestDebugMiddleware::class,
     ];
 }
