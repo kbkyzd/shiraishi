@@ -1,8 +1,8 @@
 <?php
 
-use Faker\Generator as Faker;
 use shiraishi\Order;
 use shiraishi\Product;
+use Faker\Generator as Faker;
 
 $factory->define(shiraishi\Transaction::class, function (Faker $faker) {
     $orders = Order::pluck('id')

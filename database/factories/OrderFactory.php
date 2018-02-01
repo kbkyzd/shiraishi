@@ -1,7 +1,7 @@
 <?php
 
-use Faker\Generator as Faker;
 use shiraishi\User;
+use Faker\Generator as Faker;
 
 $factory->define(shiraishi\Order::class, function (Faker $faker) {
     $users = User::role('user')

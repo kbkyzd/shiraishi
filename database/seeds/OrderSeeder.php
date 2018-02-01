@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use shiraishi\Order;
+use Illuminate\Database\Seeder;
 
 class OrderSeeder extends Seeder
 {
