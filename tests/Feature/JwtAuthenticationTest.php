@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use RoleSeeder;
 use shiraishi\User;
 use Tests\TestCase;
 use tsumugi\Testing\DataStructures;
@@ -16,7 +17,9 @@ class JwtAuthenticationTest extends TestCase
     {
         parent::setUp();
 
+        $this->seed(RoleSeeder::class);
         $this->user = factory(User::class)->create();
+        $this->user->assignRole('root');
         $this->generateValidJwtToken();
     }
 
@@ -51,12 +54,13 @@ class JwtAuthenticationTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertJson([
-                     'user' => [
+                     'data' => [
                          'id'         => $this->user->id,
                          'name'       => $this->user->name,
                          'email'      => $this->user->email,
                          'created_at' => (string) $this->user->created_at,
                          'updated_at' => (string) $this->user->updated_at,
+                         'role'       => $this->user->getRoleNames()[0],
                      ],
                  ]);
     }
