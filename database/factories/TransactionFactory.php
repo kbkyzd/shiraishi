@@ -13,7 +13,7 @@ $factory->define(shiraishi\Transaction::class, function (Faker $faker) {
 
     return [
         'order_id'       => $faker->randomElement($orders),
-        'product_id'     => $faker->unique()->randomElement($products),
+        'product_id'     => $faker->randomElement($products),
         'quantity'       => $faker->numberBetween(1, 10),
         'order_snapshot' => 'snapshot',
     ];

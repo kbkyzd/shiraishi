@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                                     $user->assignRole('merchant');
                                 });
 
-        factory(User::class, 20)->create()
+        factory(User::class, 5)->create()
                                 ->each(function (User $user) {
                                     $user->assignRole('user');
                                 });
