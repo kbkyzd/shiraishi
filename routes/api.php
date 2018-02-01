@@ -49,5 +49,16 @@ $api->version('v1', [
             $api->post('feed', 'TwitterController@store')
                 ->name('feed.store');
         });
+
+        $api->group(['prefix' => 'orders'], function (Router $api) {
+            $api->get('/', 'OrderController@index');
+            $api->get('{order}', 'OrderController@show');
+            $api->post('/', 'OrderController@store');
+        });
+
+        $api->group(['prefix' => 'payments'], function (Router $api) {
+            $api->get('/', 'PaymentController@index');
+            $api->post('{order}', 'PaymentController@store');
+        });
     });
 });
