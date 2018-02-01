@@ -18,7 +18,7 @@ class OrderTransformer extends TransformerAbstract
     {
         return [
             'id'           => $order->id,
-            'processed_at' => (string) $order->processed_at,
+            'processed_at' => $order->processed_at ? (string) $order->processed_at : null,
             'created_at'   => (string) $order->created_at,
             'updated_at'   => (string) $order->updated_at,
         ];
