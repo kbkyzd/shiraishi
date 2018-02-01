@@ -4,6 +4,7 @@ namespace tsumugi\Repositories;
 
 use shiraishi\User;
 use shiraishi\Order;
+use shiraishi\Product;
 
 class OrderRepository
 {
@@ -38,7 +39,35 @@ class OrderRepository
                     ->paginate($perPage);
     }
 
-    public function create($transactions)
+    /**
+     * @param                                                            $transactions
+     * @param \shiraishi\User|\Illuminate\Contracts\Auth\Authenticatable $user
+     * @return \shiraishi\Order
+     */
+    public function create($transactions, User $user)
     {
+        $hydrated = $this->hydrateProducts($transactions);
+
+        /** @var Order $newOrder */
+        $newOrder = $user->orders()->create();
+
+        $orders = $newOrder->transactions()
+                           ->createMany($hydrated);
+
+        return $newOrder;
+    }
+
+    /**
+     * @param $transactions
+     * @return array
+     */
+    protected function hydrateProducts($transactions): array
+    {
+        return array_map(function ($transaction) {
+            $product = Product::find($transaction['product_id']);
+            $transaction['order_snapshot'] = $product->toJson();
+
+            return $transaction;
+        }, $transactions);
     }
 }
