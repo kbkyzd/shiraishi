@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use shiraishi\Transaction;
+use Illuminate\Database\Seeder;
 
 class TransactionSeeder extends Seeder
 {
