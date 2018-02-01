@@ -23,6 +23,7 @@ class ProductSeeder extends Seeder
 
         $products = factory(Product::class, 50)->create();
 
+        /** @var Product $product */
         foreach ($products as $product) {
             $product->tag(array_random($exampleTags));
         }
