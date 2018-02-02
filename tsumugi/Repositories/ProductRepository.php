@@ -2,7 +2,6 @@
 
 namespace tsumugi\Repositories;
 
-use shiraishi\Order;
 use shiraishi\Product;
 
 class ProductRepository implements RepositoryInterface
