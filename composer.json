@@ -16,6 +16,7 @@
         "laravel/horizon": "^1.0",
         "laravel/tinker": "~1.0",
         "laravelista/ekko": "^1.4",
+        "nlp-tools/nlp-tools": "1.0.*@dev",
         "predis/predis": "^1.1",
         "simplesoftwareio/simple-qrcode": "^2.0",
         "spatie/laravel-activitylog": "^2.3",
