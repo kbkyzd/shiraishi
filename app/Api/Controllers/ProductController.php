@@ -5,6 +5,7 @@ namespace shiraishi\Api\Controllers;
 use shiraishi\Product;
 use Illuminate\Http\Request;
 use shiraishi\Http\Requests\ProductRules;
+use shiraishi\Transformers\TagTransformer;
 use tsumugi\Repositories\ProductRepository;
 use shiraishi\Transformers\ProductTransformer;
 use shiraishi\Api\Controllers\BaseApiController as ApiController;
@@ -132,6 +133,11 @@ class ProductController extends ApiController
         }
 
         return $this->response->paginator($results, new ProductTransformer());
+    }
+
+    public function availableTags()
+    {
+        return $this->response->collection($this->product->allTags(), new TagTransformer());
     }
 
     /**

@@ -22,6 +22,12 @@ class ProductRepository implements RepositoryInterface
     {
     }
 
+    public function allTags()
+    {
+        return Product::allTags()
+                      ->get();
+    }
+
     public function search($term, $perPage = 30)
     {
         return Product::where('name', 'LIKE', "%$term%")
