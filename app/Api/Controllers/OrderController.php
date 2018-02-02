@@ -4,8 +4,8 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use tsumugi\Foundation\QrCode;
+use Illuminate\Support\Facades\Validator;
 use tsumugi\Repositories\OrderRepository;
 use shiraishi\Transformers\OrderTransformer;
 use Dingo\Api\Exception\StoreResourceFailedException;
