@@ -92,7 +92,7 @@ class OrderController extends ApiController
     protected function qrForPay($orderId)
     {
         $qrCode = $this->qrCode->generate(
-            api_route('order.pay', [
+            api_route('order.show', [
                 'order' => $orderId,
             ])
         );
