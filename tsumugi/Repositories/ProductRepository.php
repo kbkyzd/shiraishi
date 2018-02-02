@@ -28,4 +28,17 @@ class ProductRepository implements RepositoryInterface
                       ->orWhere('description', 'LIKE', "%$term%")
                       ->paginate($perPage);
     }
+
+    public function searchWithTags($term, $tags, $perPage = 30)
+    {
+        if (! $term) {
+            return Product::whereTag($tags)
+                          ->paginate($perPage);
+        }
+
+        return Product::whereTag($tags)
+                      ->where('name', 'LIKE', "%$term%")
+                      ->orWhere('description', 'LIKE', "%$term%")
+                      ->paginate($perPage);
+    }
 }

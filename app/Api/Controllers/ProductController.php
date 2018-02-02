@@ -125,7 +125,11 @@ class ProductController extends ApiController
 
     public function search(Request $request)
     {
-        $results = $this->product->search($request->s);
+        if ($request->tags) {
+            $results = $this->product->searchWithTags($request->s, $request->tags);
+        } else {
+            $results = $this->product->search($request->s);
+        }
 
         return $this->response->paginator($results, new ProductTransformer());
     }
