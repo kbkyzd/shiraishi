@@ -8,6 +8,7 @@ class QrCode
 {
     public function generate($payload)
     {
-        return SimpleQrCode::generate($payload);
+        return SimpleQrCode::size(666)
+                           ->generate($payload);
     }
 }

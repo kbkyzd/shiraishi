@@ -56,7 +56,7 @@ $api->version('v1', [
             $api->get('{order}', 'OrderController@show')
                 ->name('order.show');
 
-            $api->group(['middleware' => 'role:root|merchant'], function (Router $api) {
+            $api->group(['middleware' => ['role:root|merchant']], function (Router $api) {
                 $api->post('/', 'OrderController@store')
                     ->name('order.create');
             });
@@ -65,9 +65,9 @@ $api->version('v1', [
                 ->name('order.pay');
         });
 
-        $api->group(['prefix' => 'payments'], function (Router $api) {
-            $api->get('/', 'PaymentController@index');
-            $api->post('{order}', 'PaymentController@store');
-        });
+//        $api->group(['prefix' => 'payments'], function (Router $api) {
+//            $api->get('/', 'PaymentController@index');
+//            $api->post('{order}', 'PaymentController@store');
+//        });
     });
 });

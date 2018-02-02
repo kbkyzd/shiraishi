@@ -5,6 +5,7 @@ namespace shiraishi\Api\Controllers;
 use shiraishi\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use tsumugi\Foundation\QrCode;
 use tsumugi\Repositories\OrderRepository;
 use shiraishi\Transformers\OrderTransformer;
 use Dingo\Api\Exception\StoreResourceFailedException;
@@ -17,9 +18,15 @@ class OrderController extends ApiController
      */
     protected $orders;
 
-    public function __construct(OrderRepository $orders)
+    /**
+     * @var \tsumugi\Foundation\QrCode
+     */
+    protected $qrCode;
+
+    public function __construct(OrderRepository $orders, QrCode $qrCode)
     {
         $this->orders = $orders;
+        $this->qrCode = $qrCode;
     }
 
     /**
@@ -53,7 +60,7 @@ class OrderController extends ApiController
 
         $order = $this->orders->create($request->orders, $this->user);
 
-        return $this->response->item($order, new OrderTransformer());
+        return $this->qrForPay($order->id);
     }
 
     /**
@@ -76,5 +83,21 @@ class OrderController extends ApiController
         $order = $this->orders->pay($order, $this->user);
 
         return $this->response->item($order, new OrderTransformer());
+    }
+
+    /**
+     * @param $orderId
+     * @return mixed
+     */
+    protected function qrForPay($orderId)
+    {
+        $qrCode = $this->qrCode->generate(
+            api_route('order.pay', [
+                'order' => $orderId,
+            ])
+        );
+
+        return response($qrCode, 200)
+            ->header('Content-Type', 'image/svg+xml');
     }
 }
