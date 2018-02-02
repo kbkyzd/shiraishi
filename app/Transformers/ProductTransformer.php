@@ -7,6 +7,13 @@ use League\Fractal\TransformerAbstract;
 class ProductTransformer extends TransformerAbstract
 {
     /**
+     * @var array
+     */
+    protected $defaultIncludes = [
+        'tags',
+    ];
+
+    /**
      * @param \shiraishi\Product $product
      * @return array
      */
@@ -25,5 +32,10 @@ class ProductTransformer extends TransformerAbstract
                 'image'       => $product->image,
             ],
         ];
+    }
+
+    public function includeTags($product)
+    {
+        return $this->collection($product->tags, new TagTransformer());
     }
 }
