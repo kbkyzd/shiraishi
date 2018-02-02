@@ -10,8 +10,8 @@ $api->version('v1', [
         'api',
         'api.throttle',
     ],
-    'limit'      => 100,
-    'expires'    => 5,
+    'limit'      => 200,
+    'expires'    => 1,
 ], function (Router $api) {
     $api->group(['prefix' => 'auth'], function (Router $api) {
         $api->group(['middleware' => 'guest'], function (Router $api) {
