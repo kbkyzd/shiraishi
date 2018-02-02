@@ -37,6 +37,9 @@
             "database/seeds",
             "database/factories"
         ],
+        "files": [
+            "tsumugi/Foundation/helpers.php"
+        ],
         "psr-4": {
             "shiraishi\\": "app/",
             "tsumugi\\": "tsumugi/"
