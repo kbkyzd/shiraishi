@@ -28,4 +28,15 @@ class Product extends Model implements TaggableInterface
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Return an array representation of the tags.
+     *
+     * @return array
+     */
+    public function prettyTags()
+    {
+        return $this->tags->pluck('slug')
+                          ->toArray();
+    }
 }
