@@ -32,6 +32,7 @@ $api->version('v1', [
 
     $api->get('products/search', 'ProductController@search');
     $api->get('products/tags', 'ProductController@availableTags');
+    $api->get('products/similar/{product}', 'ProductController@similar');
     $api->resource('products', 'ProductController');
 
     $api->group(['middleware' => 'api.auth'], function (Router $api) {
