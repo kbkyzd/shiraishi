@@ -9,7 +9,6 @@ use shiraishi\Http\Requests\ProductRules;
 use shiraishi\Transformers\TagTransformer;
 use tsumugi\Repositories\ProductRepository;
 use shiraishi\Transformers\ProductTransformer;
-use shiraishi\Transformers\ProductWithTagsTransformer;
 use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
 class ProductController extends ApiController
