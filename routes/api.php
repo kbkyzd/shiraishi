@@ -30,6 +30,7 @@ $api->version('v1', [
         });
     });
 
+    $api->get('products/search', 'ProductController@search');
     $api->resource('products', 'ProductController');
 
     $api->group(['middleware' => 'api.auth'], function (Router $api) {
@@ -64,10 +65,5 @@ $api->version('v1', [
             $api->post('pay/{order}', 'OrderController@pay')
                 ->name('order.pay');
         });
-
-//        $api->group(['prefix' => 'payments'], function (Router $api) {
-//            $api->get('/', 'PaymentController@index');
-//            $api->post('{order}', 'PaymentController@store');
-//        });
     });
 });

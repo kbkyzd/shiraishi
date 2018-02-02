@@ -40,8 +40,8 @@ class OrderRepository
     }
 
     /**
-     * @param \shiraishi\Order $order
-     * @param \shiraishi\User|\Illuminate\Contracts\Auth\Authenticatable  $user
+     * @param \shiraishi\Order                                           $order
+     * @param \shiraishi\User|\Illuminate\Contracts\Auth\Authenticatable $user
      * @return mixed
      */
     public function pay(Order $order, User $user)

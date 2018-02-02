@@ -5,17 +5,23 @@ namespace shiraishi\Api\Controllers;
 use shiraishi\Product;
 use Illuminate\Http\Request;
 use shiraishi\Http\Requests\ProductRules;
+use tsumugi\Repositories\ProductRepository;
 use shiraishi\Transformers\ProductTransformer;
 use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
 class ProductController extends ApiController
 {
     /**
+     * @var \tsumugi\Repositories\ProductRepository
+     */
+    protected $product;
+
+    /**
      * Set limit.
      *
      * @param \Illuminate\Http\Request $request
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, ProductRepository $product)
     {
         $this->perPage = $this->limit($request->limit ?? 5, 1, 30);
         $this->middleware('api.auth')
@@ -23,6 +29,7 @@ class ProductController extends ApiController
                  'index',
                  'show',
              ]);
+        $this->product = $product;
     }
 
     /**
@@ -114,6 +121,13 @@ class ProductController extends ApiController
         $product->delete();
 
         return $this->response->accepted();
+    }
+
+    public function search(Request $request)
+    {
+        $results = $this->product->search($request->s);
+
+        return $this->response->paginator($results, new ProductTransformer());
     }
 
     /**
