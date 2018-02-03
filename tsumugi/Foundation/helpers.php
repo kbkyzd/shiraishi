@@ -10,3 +10,15 @@ if (! function_exists('api_route')) {
         return app('api.url')->version('v1')->route($route);
     }
 }
+
+if (! function_exists('me')) {
+    /**
+     * Return the current user.
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+    function me()
+    {
+        return auth()->user();
+    }
+}
