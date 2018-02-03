@@ -4,11 +4,11 @@ namespace shiraishi\Api\Controllers;
 
 use shiraishi\Product;
 use Illuminate\Http\Request;
-use tsumugi\Repositories\TagsRepository;
 use shiraishi\Http\Requests\ProductRules;
 use shiraishi\Transformers\TagTransformer;
 use tsumugi\Repositories\ProductRepository;
 use shiraishi\Transformers\ProductTransformer;
+use tsumugi\Repositories\RecommenderRepository;
 use shiraishi\Api\Controllers\BaseApiController as ApiController;
 
 class ProductController extends ApiController
@@ -19,18 +19,18 @@ class ProductController extends ApiController
     protected $product;
 
     /**
-     * @var \tsumugi\Repositories\TagsRepository
+     * @var \tsumugi\Repositories\RecommenderRepository
      */
     protected $tags;
 
     /**
      * Set limit.
      *
-     * @param \Illuminate\Http\Request                $request
-     * @param \tsumugi\Repositories\ProductRepository $product
-     * @param \tsumugi\Repositories\TagsRepository    $tags
+     * @param \Illuminate\Http\Request                    $request
+     * @param \tsumugi\Repositories\ProductRepository     $product
+     * @param \tsumugi\Repositories\RecommenderRepository $tags
      */
-    public function __construct(Request $request, ProductRepository $product, TagsRepository $tags)
+    public function __construct(Request $request, ProductRepository $product, RecommenderRepository $tags)
     {
         $this->perPage = $this->limit($request->limit ?? 5, 1, 30);
         $this->middleware('api.auth')

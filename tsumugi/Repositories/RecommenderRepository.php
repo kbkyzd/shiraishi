@@ -6,7 +6,7 @@ use shiraishi\Product;
 use Illuminate\Support\Collection;
 use NlpTools\Similarity\CosineSimilarity;
 
-class TagsRepository
+class RecommenderRepository
 {
     /**
      * @var \NlpTools\Similarity\CosineSimilarity
