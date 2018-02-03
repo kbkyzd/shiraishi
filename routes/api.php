@@ -36,7 +36,6 @@ $api->version('v1', [
     $api->resource('products', 'ProductController');
 
     $api->group(['middleware' => 'api.auth'], function (Router $api) {
-
         $api->group(['prefix' => 'chat'], function (Router $api) {
             $api->get('/', 'ChatController@index');
             $api->get('{recipient}', 'ChatController@show')
