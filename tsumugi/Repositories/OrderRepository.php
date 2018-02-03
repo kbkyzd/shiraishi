@@ -49,8 +49,9 @@ class OrderRepository
         return tap($order, function (Order $order) use ($user) {
             $order->user()->associate($user);
             $order->processed_at = now();
+            $this->transaction->updateStock($order);
 
-            $order->save();
+            $order->saveOrFail();
         });
     }
 
