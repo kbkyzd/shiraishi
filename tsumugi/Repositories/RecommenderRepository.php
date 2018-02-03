@@ -48,6 +48,7 @@ class RecommenderRepository
      */
     protected function calculateSimilarity(array $originalTags, Collection $products)
     {
+        // Calculate and attach a cos-sim to each product.
         $indexed = $products->map(function (Product $product) use ($originalTags) {
             $newProduct = $product->toArray();
             $productTags = $product->prettyTags();
@@ -61,6 +62,8 @@ class RecommenderRepository
         $sorted = $indexed->sortByDesc('cos')
                           ->values();
 
+        // Pop off the first value because it's usually the first value,
+        // based on how the db is seeded.
         $sorted->shift();
 
         return $sorted->all();
