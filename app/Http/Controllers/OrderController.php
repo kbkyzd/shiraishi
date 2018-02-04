@@ -42,6 +42,8 @@ class OrderController extends Controller
     public function pay(Order $order)
     {
         $order = $this->orders->pay($order, auth()->user());
+
+        return redirect()->route('orders.index');
     }
 
     /**
