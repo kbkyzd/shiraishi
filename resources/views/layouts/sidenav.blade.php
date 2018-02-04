@@ -11,13 +11,26 @@
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
             <li>
-                <a class="collapsible-header">Main</a>
+                <a class="collapsible-header active">Main</a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="#">Test 2</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Chat</a></li>
+                        <li><a href="{{ route('store.index') }}">Products</a></li>
                     </ul>
                 </div>
             </li>
+            @role('root|merchant')
+            <li>
+                <a class="collapsible-header active">Admin</a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="{{ route('users.index') }}">Users</a></li>
+                    </ul>
+                </div>
+            </li>
+            @endrole
         </ul>
     </li>
     @role('admin')

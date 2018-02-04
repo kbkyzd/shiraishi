@@ -23,9 +23,6 @@
     </main>
     <footer>
         <div class="container">
-            {{--<small class="right">Running {{ $git->hash() }} (r{{ $git->revision() }})--}}
-                {{--<span title="Dirty">{{ $git->isClean() ? '' : '!!!' }}</span>--}}
-            {{--</small>--}}
         </div>
     </footer>
 </div>
