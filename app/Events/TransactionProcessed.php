@@ -2,8 +2,8 @@
 
 namespace shiraishi\Events;
 
-use shiraishi\Order;
 use shiraishi\User;
+use shiraishi\Order;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
