@@ -65,6 +65,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Order::class);
     }
 
+    public function processedOrders()
+    {
+        return $this->orders()->whereNotNull('processed_at');
+    }
+
     /**
      * Conversations the user is part of (has made).
      *
