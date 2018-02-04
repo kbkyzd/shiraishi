@@ -2,9 +2,9 @@
 
 namespace shiraishi\Http\Controllers;
 
+use shiraishi\User;
 use Illuminate\Http\Request;
 use shiraishi\Http\Requests\UserRequest;
-use shiraishi\User;
 use tsumugi\Repositories\RoleRepository;
 use tsumugi\Repositories\UserRepository;
 
