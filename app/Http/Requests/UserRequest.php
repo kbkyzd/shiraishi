@@ -3,7 +3,6 @@
 namespace shiraishi\Http\Requests;
 
 use Illuminate\Validation\Rule;
-use kaede\Repositories\RoleRepository;
 use tsumugi\Repositories\RoleRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,8 +20,7 @@ class UserRequest extends FormRequest
 
     public function __construct(RoleRepository $roleRepository)
     {
-        $this->roleRepository = $roleRepository;
-        $this->availableRoles = $this->roleRepository->getAvailableRoles();
+        $this->availableRoles = $roleRepository->getAvailableRoles();
     }
 
     /**
@@ -32,7 +30,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->hasRole('admin');
+        return $this->user()->hasRole('root|admin');
     }
 
     /**
