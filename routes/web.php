@@ -12,7 +12,6 @@
 */
 
 use shiraishi\User;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 Route::get('/', function () {
     if (auth()->user()) {

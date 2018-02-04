@@ -4,8 +4,8 @@ namespace shiraishi\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use kaede\Repositories\RoleRepository;
-use Illuminate\Foundation\Http\FormRequest;
 use tsumugi\Repositories\RoleRepository;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
