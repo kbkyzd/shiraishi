@@ -13,11 +13,18 @@ if (mix.inProduction()) {
     mix.version();
 }
 
-if (! mix.inProduction()) {
+if (!mix.inProduction()) {
     mix.sourceMaps();
 }
 
+mix.webpackConfig({
+    node: {
+        fs: 'empty',
+    }
+});
+
 mix.browserSync({
+    https: true,
     proxy: {
         target: 'localhost:8000',
         reqHeaders() {
