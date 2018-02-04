@@ -2,9 +2,9 @@
 
 namespace tsumugi\Repositories;
 
-use Illuminate\Support\Facades\Cache;
 use shiraishi\Product;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use NlpTools\Similarity\CosineSimilarity;
 
 class RecommenderRepository
