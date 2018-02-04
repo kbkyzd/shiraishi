@@ -60,6 +60,10 @@ class OrderController extends ApiController
 
         $order = $this->orders->create($request->orders, $this->user);
 
+        if ($request->forweb) {
+            return $this->qrForPayForWeb($order->id);
+        }
+
         return $this->qrForPay($order->id);
     }
 
@@ -93,6 +97,18 @@ class OrderController extends ApiController
     {
         $qrCode = $this->qrCode->generate(
             api_route('order.show', [
+                'order' => $orderId,
+            ])
+        );
+
+        return response($qrCode, 200)
+            ->header('Content-Type', 'image/svg+xml');
+    }
+
+    protected function qrForPayForWeb($orderId)
+    {
+        $qrCode = $this->qrCode->generate(
+            route('front.pay', [
                 'order' => $orderId,
             ])
         );

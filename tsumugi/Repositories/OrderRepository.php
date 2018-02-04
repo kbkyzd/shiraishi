@@ -2,6 +2,7 @@
 
 namespace tsumugi\Repositories;
 
+use shiraishi\Events\TransactionProcessed;
 use shiraishi\User;
 use shiraishi\Order;
 use shiraishi\Product;
@@ -52,6 +53,7 @@ class OrderRepository
             $this->transaction->updateStock($order);
 
             $order->saveOrFail();
+            event(new TransactionProcessed($order));
         });
     }
 

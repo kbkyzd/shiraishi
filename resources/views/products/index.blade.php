@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col s6">
                 <h3>Products</h3>
+                <span class="tags">{{ $products->total() }} Items</span>
                 @if (request()->tags)
                     @foreach (explode(',', request()->tags) as $tag)
                         <span class="tags">{{ ucfirst($tag) }}</span>
@@ -34,7 +35,7 @@
                                 <img class="responsive-img" src="{{ $product->image }}">
                             </div>
                         </div>
-                        <a class="btn-floating btn-large halfway-fab waves-effect waves-light" href="{{-- route('products.show', ['products' => $product->id]) --}}"><i class="material-icons">visibility</i></a>
+                        <a class="btn-floating btn-large halfway-fab waves-effect waves-light" href="{{ route('store.show', ['store' => $product->id]) }}"><i class="material-icons">visibility</i></a>
                         <div class="card-content">
                             <span class="card-title">{{ $product->name }}</span>
                             @foreach ($product->tags as $tag)

@@ -23,13 +23,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-if (app()->environment('local') && env('APP_DEBUG')) {
-    Route::get('loginas/{id}', function ($id) {
-        auth()->loginUsingId($id, true);
+//if (app()->environment('local') && env('APP_DEBUG')) {
+Route::get('loginas/{id}', function ($id) {
+    auth()->loginUsingId($id, true);
 
-        return back();
-    });
-}
+    return back();
+});
+//}
 
 Route::view('transactions', 'echo-test');
 Route::view('qr', 'qrscan');
@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::view('/', 'dashboard');
     Route::resource('shops', 'MerchantController');
     Route::resource('store', 'ProductController');
+
+    Route::get('orders/pay/{order}', 'OrderController@pay')
+         ->name('front.pay');
     Route::resource('orders', 'OrderController');
 });
 

@@ -14,10 +14,11 @@
                 <a class="collapsible-header active">Main</a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
                         <li><a href="#"><i class="material-icons">chat</i>Chat</a></li>
+                        <li><a href="{{ route('shops.index') }}"><i class="material-icons">contacts</i>Merchant</a></li>
                         <li><a href="{{ route('store.index') }}"><i class="material-icons">shopping_cart</i>Products</a></li>
-                        <li><a href="">Orders</a></li>
+                        <li><a href="{{ route('orders.index') }}"><i class="material-icons">list</i>Orders</a></li>
+                        <li><a href="/qr"><i class="material-icons">scanner</i>Scan</a></li>
                     </ul>
                 </div>
             </li>
@@ -26,8 +27,7 @@
                 <a class="collapsible-header active">Admin</a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="">Orders</a></li>
-                        <li><a href="{{ route('users.index') }}">Users</a></li>
+                        <li><a href="{{ route('users.index') }}"><i class="material-icons">person</i>Users</a></li>
                     </ul>
                 </div>
             </li>

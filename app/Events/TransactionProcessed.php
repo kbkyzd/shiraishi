@@ -2,6 +2,7 @@
 
 namespace shiraishi\Events;
 
+use shiraishi\Order;
 use shiraishi\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -16,16 +17,16 @@ class TransactionProcessed implements ShouldBroadcast
     /**
      * @var \shiraishi\User
      */
-    public $user;
+    public $order;
 
     /**
      * Create a new event instance.
      *
-     * @param \shiraishi\User $user
+     * @param \shiraishi\Order $order
      */
-    public function __construct(User $user)
+    public function __construct(Order $order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     /**
@@ -35,6 +36,6 @@ class TransactionProcessed implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('App.User.1');
+        return new PrivateChannel("App.User.{$this->order->user->id}");
     }
 }

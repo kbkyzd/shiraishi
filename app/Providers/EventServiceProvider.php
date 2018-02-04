@@ -14,7 +14,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'shiraishi\Events\TransactionProcessed' => [
-            'shiraishi\Listeners\Test',
+            'shiraishi\Listeners\OrderCompletedMail',
         ],
     ];
 

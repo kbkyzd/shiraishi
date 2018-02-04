@@ -93,6 +93,7 @@ return [
 
     'fallback_locale' => 'en',
 
+    'faker_locale' => 'en_SG',
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

@@ -17,6 +17,8 @@ $factory->define(shiraishi\User::class, function (Faker $faker) {
     return [
         'name'     => $faker->name,
         'email'    => $faker->unique()->safeEmail,
+        'image'    => sprintf('https://picsum.photos/400?random&rand=%s', $faker->numberBetween(100, 200)),
+        'contact'  => $faker->phoneNumber,
         'password' => '$2y$10$91mBOtqPoPOz3oQeppATcOG0v97/btdAjZmR2GjPnogOMLEYsgcFS', // changeme
     ];
 });

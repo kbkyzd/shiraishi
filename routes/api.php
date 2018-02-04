@@ -44,13 +44,6 @@ $api->version('v1', [
                 ->where('recipient', '[0-9]+');
         });
 
-        $api->group(['prefix' => 'posts'], function (Router $api) {
-            $api->get('/', 'TwitterController@index')
-                ->name('feed.show');
-            $api->post('feed', 'TwitterController@store')
-                ->name('feed.store');
-        });
-
         $api->group(['prefix' => 'orders'], function (Router $api) {
             $api->get('/', 'OrderController@index')
                 ->name('order.index');

@@ -3,12 +3,14 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h3 class="center light">{{ $product->name }}</h3>
+                <h3 class="center light"> {{ $product->name }}</h3>
                 <h6 class="center">
                     @foreach ($product->tags as $tag)
                         <span class="tags">{{ $tag->name }}</span>
                     @endforeach
                 </h6>
+                <br>
+                <h6 class="center">Available: <span class="tags">{{ $product->stock }}</span></h6>
             </div>
         </div>
         <div class="row">

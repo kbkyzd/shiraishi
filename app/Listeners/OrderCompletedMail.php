@@ -4,7 +4,7 @@ namespace shiraishi\Listeners;
 
 use shiraishi\Events\TransactionProcessed;
 
-class Test
+class OrderCompletedMail
 {
     /**
      * Create the event listener.

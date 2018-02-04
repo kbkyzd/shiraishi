@@ -14,7 +14,12 @@ class MerchantController extends Controller
      */
     public function index()
     {
-        //
+        $merchants = User::role('merchant')
+                         ->paginate(6);
+
+        return view('merchants.index', [
+            'merchants' => $merchants,
+        ]);
     }
 
     /**
@@ -30,7 +35,7 @@ class MerchantController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +46,7 @@ class MerchantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \shiraishi\User  $user
+     * @param \shiraishi\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -52,7 +57,7 @@ class MerchantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \shiraishi\User  $user
+     * @param \shiraishi\User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -63,8 +68,8 @@ class MerchantController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \shiraishi\User  $user
+     * @param \Illuminate\Http\Request $request
+     * @param \shiraishi\User          $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -75,7 +80,7 @@ class MerchantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \shiraishi\User  $user
+     * @param \shiraishi\User $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)

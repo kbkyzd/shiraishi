@@ -53,10 +53,7 @@
             });
 
             this.scanner.addListener('scan', (content, image) => {
-                self.scans.unshift({
-                    date: +(Date.now()),
-                    content: content
-                });
+                window.location.href = content;
             });
 
             Instascan.Camera.getCameras().then(function(cameras) {

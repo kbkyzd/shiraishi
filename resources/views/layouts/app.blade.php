@@ -28,10 +28,34 @@
 </div>
 </body>
 @if(app()->isLocal())
-    <script src="//{{ request()->getHttpHost() }}:6001/socket.io/socket.io.js"></script>
+    <script src="//localhost:6001/socket.io/socket.io.js"></script>
 @else
     <script src="/socket.io/socket.io.js"></script>
 @endif
 <script src="{{ mix('js/app.js') }}"></script>
+<script type="text/javascript">
+    (function($) {
+        $(function() {
+
+            function spawnNotification(body, icon, title, link) {
+                let options = {
+                    body: body,
+                    icon: icon
+                };
+                let n = new Notification(title, options);
+                n.onclick = () => {
+                    window.open(link);
+                };
+                setTimeout(n.close.bind(n), 5000);
+            }
+
+            Echo.private('App.User.' + {{ me()->id }})
+                .listen('TransactionProcessed', e => {
+                    console.log(e);
+                    spawnNotification('Your transaction was processed', '/favicon.png', 'Transaction Processed', '/orders/' + e.order.id);
+                });
+        });
+    })(jQuery);
+</script>
 @include('layouts.toast')
 </html>
