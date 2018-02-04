@@ -2,10 +2,10 @@
 
 namespace tsumugi\Repositories;
 
-use shiraishi\Events\TransactionProcessed;
 use shiraishi\User;
 use shiraishi\Order;
 use shiraishi\Product;
+use shiraishi\Events\TransactionProcessed;
 
 class OrderRepository
 {
