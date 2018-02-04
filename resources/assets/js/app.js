@@ -4,6 +4,7 @@ window.Vue = require('vue');
 
 Vue.prototype.$http = axios.create();
 Vue.component('echo-listen', require('./components/EchoListen.vue'));
+Vue.component('qr-scanner', require('./components/QrScanner.vue'));
 
 const app = new Vue({
     el: '#app'

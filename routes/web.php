@@ -15,6 +15,10 @@ use shiraishi\User;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 Route::get('/', function () {
+    if (auth()->user()) {
+        return redirect()->route('shops.index');
+    }
+
     return view('welcome');
 });
 
@@ -29,16 +33,21 @@ if (app()->environment('local') && env('APP_DEBUG')) {
 }
 
 Route::view('transactions', 'echo-test');
-
-Route::get('job', function () {
-    return QrCode::size(666)
-                 ->generate(route('firejob'));
-});
+Route::view('qr', 'qrscan');
 
 Route::get('firejob', function () {
     event(new shiraishi\Events\TransactionProcessed(User::find(1)));
 })->name('firejob');
 
+Route::middleware('auth')->group(function () {
+    Route::view('/', 'dashboard');
+    Route::resource('shops', 'MerchantController');
+    Route::resource('store', 'ProductController');
+});
+
 Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::view('/', 'home');
+    Route::view('/', 'dashboard');
+    Route::resource('users', 'UserController');
+    Route::resource('shops', 'MerchantController');
+    Route::resource('store', 'ProductController');
 });
