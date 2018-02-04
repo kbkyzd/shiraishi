@@ -33,4 +33,5 @@
     <script src="/socket.io/socket.io.js"></script>
 @endif
 <script src="{{ mix('js/app.js') }}"></script>
+@include('layouts.toast')
 </html>
