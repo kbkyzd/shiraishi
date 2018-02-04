@@ -12,6 +12,8 @@ const app = new Vue({
 
 (function($) {
     $(function() {
+        $(".button-collapse").sideNav();
+        $('.chips').material_chip();
         // let mdTerms = new SimpleMDE({
         //     element: $('#markdown-terms')[0]
         // });

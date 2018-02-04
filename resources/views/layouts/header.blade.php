@@ -4,7 +4,6 @@
         <a id="logo-container" href="#" class="brand-logo">
             dess <small style="font-size: 45%">#{{ $git->hash() }} (r{{ $git->revision() }})</small>
         </a>
-
         <ul class="right hide-on-med-and-down">
             <ul id="userdropdown" class="dropdown-content">
                 <li class="divider"></li>

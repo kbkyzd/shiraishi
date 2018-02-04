@@ -42,11 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::view('/', 'dashboard');
     Route::resource('shops', 'MerchantController');
     Route::resource('store', 'ProductController');
+    Route::resource('orders', 'OrderController');
 });
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::view('/', 'dashboard');
     Route::resource('users', 'UserController');
-    Route::resource('shops', 'MerchantController');
-    Route::resource('store', 'ProductController');
 });

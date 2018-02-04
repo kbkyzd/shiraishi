@@ -24,7 +24,7 @@ mix.webpackConfig({
 });
 
 mix.browserSync({
-    https: process.env.MIX_BS_USE_HTTPS || false,
+    https: false,
     proxy: {
         target: 'localhost:8000',
         reqHeaders() {

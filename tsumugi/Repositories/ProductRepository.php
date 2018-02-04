@@ -4,7 +4,7 @@ namespace tsumugi\Repositories;
 
 use shiraishi\Product;
 
-class ProductRepository implements RepositoryInterface
+class ProductRepository
 {
     public function all()
     {
@@ -14,12 +14,14 @@ class ProductRepository implements RepositoryInterface
     {
     }
 
-    public function paginate()
+    public function paginate($perPage)
     {
+        return Product::paginate($perPage);
     }
 
     public function find($id)
     {
+        return Product::findOrFail($id);
     }
 
     public function allTags()

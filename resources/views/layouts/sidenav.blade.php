@@ -14,9 +14,10 @@
                 <a class="collapsible-header active">Main</a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Chat</a></li>
-                        <li><a href="{{ route('store.index') }}">Products</a></li>
+                        <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="#"><i class="material-icons">chat</i>Chat</a></li>
+                        <li><a href="{{ route('store.index') }}"><i class="material-icons">shopping_cart</i>Products</a></li>
+                        <li><a href="">Orders</a></li>
                     </ul>
                 </div>
             </li>
@@ -25,7 +26,7 @@
                 <a class="collapsible-header active">Admin</a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="#">Orders</a></li>
+                        <li><a href="">Orders</a></li>
                         <li><a href="{{ route('users.index') }}">Users</a></li>
                     </ul>
                 </div>

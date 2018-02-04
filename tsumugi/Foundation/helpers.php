@@ -22,3 +22,14 @@ if (! function_exists('me')) {
         return auth()->user();
     }
 }
+
+if (! function_exists('toDollars')) {
+    /**
+     * @param float $cents
+     * @return float
+     */
+    function toDollars($cents)
+    {
+        return number_format($cents / 100, 2);
+    }
+}

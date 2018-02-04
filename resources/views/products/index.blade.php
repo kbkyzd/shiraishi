@@ -2,49 +2,55 @@
 
 @section('content')
     <div class="header-shell">
-        <h4><i class="fa fa-user"></i> User Management</h4>
-        <span class="tags"><i class="fa fa-users"></i>{{ $users->total() }} Users</span>
-        <span class="tags red lighten-4"><i class="fa fa-ban"></i>{{ $disabled->count() }} Disabled</span>
+        <div class="row">
+            <div class="col s6">
+                <h3>Products</h3>
+                @if (request()->tags)
+                    @foreach (explode(',', request()->tags) as $tag)
+                        <span class="tags">{{ ucfirst($tag) }}</span>
+                    @endforeach
+                    <a href="{{ route('store.index') }}"><i class="fa fa-times grey-text"></i></a>
+                @endif
+            </div>
+            <form>
+                <div class="input-field col s4">
+                    <input id="first_name" type="text" class="validate" name="s" value="{{ request()->s ?? '' }}">
+                    <input type="hidden" name="tags" value="{{ request()->tags }}">
+                    <label for="first_name">Query</label>
+                </div>
+                <div class="col s2">
+                    <button type="submit" class="btn-flat waves-light waves-effect">Search</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="container with-table">
-        <div class="data-table">
-            <table class="data-table highlight">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th class="right-align">Credits</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($users as $user)
-                    <tr class="trigger">
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td class="right-align">{{ $user->availableCredit() }}</td>
-                        <td>
-                            <view-user user-id="{{ $user->id }}"
-                                       edit-route="{{ route('users.edit', ['id' => $user->id]) }}"
-                                       name="{{ $user->name }}"
-                                       email="{{ $user->email }}"></view-user>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+    <div class="container">
+        <div class="row">
+            @foreach ($products as $product)
+                <div class="col s12 m6 xl4">
+                    <div class="card large hoverable">
+                        <div class="card-image">
+                            <div class="darken-tint">
+                                <img class="responsive-img" src="{{ $product->image }}">
+                            </div>
+                        </div>
+                        <a class="btn-floating btn-large halfway-fab waves-effect waves-light" href="{{-- route('products.show', ['products' => $product->id]) --}}"><i class="material-icons">visibility</i></a>
+                        <div class="card-content">
+                            <span class="card-title">{{ $product->name }}</span>
+                            @foreach ($product->tags as $tag)
+                                <span class="tags">
+                                    <a class="black-text" href="{{ route('store.index', ['tags' => $tag->slug] ) }}">{{ $tag->name }}</a> | <a href="{{ route('store.index', ['tags' => $tag->slug . ',' . request()->tags]) }}"><i class="fa fa-plus grey-text" style="margin-right: 0"></i></a>
+                                </span>
+                            @endforeach
+                            &nbsp;
+                            <p>{{ $product->description }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
         <div class="center">
-            {{ $users->links() }}
-        </div>
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
-                <i class="large material-icons">mode_edit</i>
-            </a>
-            <ul>
-                <li><a class="btn-floating red"><i class="fa fa-bar-chart tooltipped" data-tooltip="View User Statistics"></i></a></li>
-                <li><a class="btn-floating green"><i class="fa fa-plus tooltipped" data-tooltip="Add User"></i></a></li>
-            </ul>
+            {{ $products->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

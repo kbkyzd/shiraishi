@@ -77,15 +77,34 @@
             <div class="section">
                 <div class="row">
                     <div class="col s12 m2">
-                        <h5 class="form-header">Info</h5>
+                        <h5 class="form-header">Orders</h5>
                     </div>
                     <div class="col s12 m10">
-                        <dl class="dl-horizontal">
-                            <dt>Email</dt>
-                            <dd>{{ $user->email }}</dd>
-                            <dt>Name</dt>
-                            <dd>{{ $user->name }}</dd>
-                        </dl>
+                        <table class="data-table highlight">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Transaction</th>
+                                <th class="center">Processed</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($user->processedOrders as $order)
+                                <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td>
+                                        @foreach ($order->transactions as $transaction)
+                                            {{ $transaction->product->name }} <span class="grey-text text-darken-1">(x{{ $transaction->quantity }})</span><span class="right">{{ toDollars($transaction->product->price * $transaction->quantity) }} SGD</span>
+                                            @if(! $loop->last)
+                                                <br>
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td class="center" title="{{ $order->processed_at }}">{{ $order->processed_at->diffForHumans() }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

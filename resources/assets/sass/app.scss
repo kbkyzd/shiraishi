@@ -103,3 +103,8 @@ main {
 .side-nav {
     width: 265px;
 }
+
+.card .card-action {
+    max-height: 55px;
+    overflow-y: scroll;
+}

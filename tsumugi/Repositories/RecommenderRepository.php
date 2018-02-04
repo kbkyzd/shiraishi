@@ -2,6 +2,7 @@
 
 namespace tsumugi\Repositories;
 
+use Illuminate\Support\Facades\Cache;
 use shiraishi\Product;
 use Illuminate\Support\Collection;
 use NlpTools\Similarity\CosineSimilarity;
@@ -21,6 +22,13 @@ class RecommenderRepository
     public function __construct(CosineSimilarity $cosineSimilarity)
     {
         $this->cosineSimilarity = $cosineSimilarity;
+    }
+
+    public function similarCached(Product $product)
+    {
+        return Cache::remember('similar:products:' . $product->id, 15, function () use ($product) {
+            return $this->similar($product);
+        });
     }
 
     /**
