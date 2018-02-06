@@ -43,7 +43,9 @@ class OrderController extends Controller
     {
         $order = $this->orders->pay($order, auth()->user());
 
-        return redirect()->route('orders.index');
+        return redirect()->route('orders.show', [
+            'id' => $order->id,
+        ]);
     }
 
     /**
@@ -93,7 +95,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('orders.show')->with('order', $order);
     }
 
     /**

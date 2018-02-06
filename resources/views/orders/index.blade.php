@@ -27,7 +27,7 @@
                                 @endif
                             @endforeach
                         </td>
-                        <td class="center" title="{{ $order->processed_at }}">{{ $order->processed_at->diffForHumans() }}</td>
+                        <td class="center" title="{{ $order->processed_at }}">{{ $order->processed_at ? $order->processed_at->diffForHumans() : 'N/A'  }}</td>
                     </tr>
                 @endforeach
                 </tbody>
