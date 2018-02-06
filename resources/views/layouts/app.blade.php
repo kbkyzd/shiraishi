@@ -46,7 +46,7 @@
                 n.onclick = () => {
                     window.open(link);
                 };
-                setTimeout(n.close.bind(n), 5000);
+                setTimeout(n.close.bind(n), 20000);
             }
 
             Echo.private('App.User.' + {{ me()->id }})
