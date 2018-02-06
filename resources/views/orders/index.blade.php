@@ -18,7 +18,7 @@
                 <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->id }}</td>
+                        <td><a href="{{ route('orders.show', ['id' => $order->id]) }}">{{ $order->id }}</a></td>
                         <td>
                             @foreach ($order->transactions as $transaction)
                                 {{ $transaction->product->name }} <span class="grey-text text-darken-1">(x{{ $transaction->quantity }})</span><span class="right">{{ toDollars($transaction->product->price * $transaction->quantity) }} SGD</span>
