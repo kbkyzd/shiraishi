@@ -13,6 +13,20 @@ $api->version('v1', [
     'limit'      => 200,
     'expires'    => 1,
 ], function (Router $api) {
+    $api->get('migrate-db', function () {
+        abort_if(Cache::has('recently-migrated'), 500, 'You can only migrate the DB every 10 minutes.');
+
+        Artisan::call('migrate:fresh', [
+            '--seed' => true,
+        ]);
+
+        Cache::put('recently-migrated', true, now()->addMinutes(10));
+
+        return [
+            'DB migrated!',
+        ];
+    });
+
     $api->group(['prefix' => 'auth'], function (Router $api) {
         $api->group(['middleware' => 'guest'], function (Router $api) {
             $api->post('login', 'Auth\LoginController@login')
