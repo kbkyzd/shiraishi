@@ -29,7 +29,7 @@ You will need a *nix environment (WSL works pretty well) as [horizon](https://la
 ```
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
-SESSION_DRIVER=sqlite
+SESSION_DRIVER=file
 SESSION_LIFETIME=120
 QUEUE_DRIVER=sync
 ```
