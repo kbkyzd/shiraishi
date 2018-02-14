@@ -34,7 +34,7 @@ class LoginController extends Controller
      *              @SWG\Property(property="email", description="Email of the user"),
      *              @SWG\Property(property="password", description="Password of the user"),
      *              example={
-     *                  "email": "mao@mao.mao",
+     *                  "email": "mao@m.m",
      *                  "password": "changeme"
      *               }
      *          ),
